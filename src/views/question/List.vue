@@ -14,7 +14,7 @@
                     </TabPane>
                     <TabPane label="回答" name="name2">标签二的内容</TabPane>
                     <TabPane label="建议" name="name3">标签三的内容</TabPane>
-                    <TabPane label="其他" name="name3">标签三的内容</TabPane>
+                    <TabPane label="其他" name="name4">标签三的内容</TabPane>
                 </Tabs>
             </div>
         </Col>
@@ -29,8 +29,6 @@
 </script>
 
 <style lang="less" scoped>
-@import url("../../theme.less");
-
 .section {
     background: #fff;
 }

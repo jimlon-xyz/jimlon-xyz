@@ -6,8 +6,8 @@
           <Menu mode="horizontal">
             <MenuItem name="1">首页</MenuItem>
             <MenuItem name="2">问答</MenuItem>
-            <MenuItem name="2">课堂</MenuItem>
-            <MenuItem name="2">求购</MenuItem>
+            <MenuItem name="3">课堂</MenuItem>
+            <MenuItem name="4">求购</MenuItem>
           </Menu>
           <div class="right-side">
             <span>登录</span><Divider type="vertical" /><span>注册</span>

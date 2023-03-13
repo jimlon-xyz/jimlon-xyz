@@ -28,6 +28,11 @@
 </script>
 
 <style lang="less">
+.ivu-tag-size-small {
+  height: 18px !important;
+  line-height: 18px !important;
+}
+
 .header {
   background: #fff;
   box-shadow: 0 0 3px 1px rgba(38,38,38,0.06);

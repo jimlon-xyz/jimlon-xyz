@@ -2,12 +2,28 @@
     <Row :gutter="20">
         <Col :span="18">
             <div class="section">
-                <Tabs value="name1" :animated="false">
+                <Tabs value="name1" :animated="false" :bar-gutter="20">
                     <TabPane label="全部" name="name1">
                         <div class="section-p-20">
                             <List>
-                                <ListItem>
+                                <ListItem v-for="k of 10" :key="`k-${k}`">
                                     <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" :size="48" />
+                                    <div class="topic-content">
+                                        <div class="topic-title"><Tag size="small" color="primary">置顶</Tag>这是一个标题</div>
+                                        <div class="topic-meta">
+                                            <div class="ltr">
+                                                <span>问答</span>
+                                                <Divider type="vertical" />
+                                                <span>10分钟前</span>
+                                                <Divider type="vertical" />
+                                                <span>最后回复来自 星雨</span>
+                                            </div>
+                                            <div class="reply-count">
+                                                <span><i class="fa-sharp fa-regular fa-eye"></i>15698</span>
+                                                <span><i class="fa-regular fa-comment-dots"></i>36</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </ListItem>
                             </List>
                         </div>   
@@ -44,6 +60,33 @@
     align-items: center;
     padding: 8px 0;
     margin-right: 20px;
+ }
+
+ .section :deep(.ivu-tabs) .ivu-tabs-content .topic-content {
+    margin-left: 20px;
+    flex: 1;
+
+    .topic-title {
+        margin-bottom: 15px;
+        font-size: 16px;
+        line-height: 22px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .topic-meta {
+        display: flex;
+        color: @text-color-third;
+        justify-content: space-between;
+        font-size: 13px;
+
+        .reply-count span {
+            margin-left: 15px;
+            i {
+                margin-right: 3px;
+            }
+        }
+    } 
  }
 
 .section :deep(.ivu-tabs-nav-wrap) {

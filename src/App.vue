@@ -11,13 +11,13 @@
           </Menu>
           <div class="right-side">
             <span>登录</span><Divider type="vertical" /><span>注册</span>
-            <Button type="primary">投稿</Button>
+            <Button type="primary" size="small">投稿</Button>
           </div>
         </section>
       </Header>
       <Content class="content">
         <section>
-          asdfasdfasdf
+          <router-view/>
         </section>
       </Content>
       <Footer></Footer>
@@ -27,7 +27,7 @@
 <script>
 </script>
 
-<style>
+<style lang="less">
 .header {
   background: #fff;
   box-shadow: 0 0 3px 1px rgba(38,38,38,0.06);

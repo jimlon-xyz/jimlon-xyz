@@ -11,6 +11,9 @@ module.exports = defineConfig({
 	css: {
 		loaderOptions: {
 		  less: {
+			additionalData: `
+				@import "~@/theme.less";
+			`,
 			lessOptions: {
 			  javascriptEnabled: true,
 			}

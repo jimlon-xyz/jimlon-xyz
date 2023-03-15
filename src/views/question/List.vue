@@ -1,6 +1,6 @@
 <template>
     <Row :gutter="20">
-        <Col :span="18">
+        <Col :span="17">
             <div class="section">
                 <Tabs value="name1" :animated="false" :bar-gutter="20">
                     <TabPane label="全部" name="name1">
@@ -9,7 +9,7 @@
                                 <ListItem v-for="k of 10" :key="`k-${k}`">
                                     <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" :size="48" />
                                     <div class="topic-content">
-                                        <div class="topic-title"><Tag size="small" color="primary">置顶</Tag>这是一个标题</div>
+                                        <div class="topic-title"><Tag v-if="k - 1 === 0" size="small" color="primary">置顶</Tag>这是一个标题</div>
                                         <div class="topic-meta">
                                             <div class="ltr">
                                                 <span>问答</span>
@@ -34,8 +34,14 @@
                 </Tabs>
             </div>
         </Col>
-        <Col :span="6">
-            <Button size="large" type="primary" long icon="md-create">我要提问</Button>
+        <Col :span="7">
+            <div class="block bg-none"><Button size="large" type="primary" long icon="md-create">我要提问</Button></div>
+            <div class="block">
+                <h3 class="title">热评帖子</h3>
+            </div>
+            <div class="block">
+                <h3 class="title">随便看看</h3>
+            </div>
         </Col>
     </Row>
 </template>
@@ -96,4 +102,32 @@
  .section-p-20 {
     padding: 0 20px 20px;
  }
+
+.block.bg-none {
+    background: none;
+    padding: 0;
+}
+
+.block {
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 15px;
+
+    .title {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1;
+        color: @text-dark-color;
+        display: flex;
+        &::before {
+            content: "";
+            display: block;
+            width: 3px;
+            margin-right: 12px;
+            background: @primary-color;
+            border-radius: 3px;
+        }
+    }
+}
+
 </style>

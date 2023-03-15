@@ -33,6 +33,38 @@
   line-height: 18px !important;
 }
 
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px; 
+    background: transparent;
+}
+
+::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: rgba(0,0,0,0);
+    transition: background-color .5s ease-in;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.35);
+}
+
+::-webkit-scrollbar-button {
+    background-color: transparent;
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+    width: 5px;
+    height: 5px;
+}
+
 .header {
   background: #fff;
   box-shadow: 0 0 3px 1px rgba(38,38,38,0.06);
@@ -74,7 +106,7 @@
 }
 
 .content {
-  padding-top: 64px;
+  margin-top: 64px;
   background: #f5f5f5;
 }
 

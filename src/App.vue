@@ -2,9 +2,9 @@
   <Layout>
       <Header class="header">
         <section>
-          <img :src="require('./assets/logo.svg')" height="48" />
+          <img :src="require('./assets/jimlogo-dark.png')" height="42" />
           <Menu mode="horizontal">
-            <MenuItem name="1">首页</MenuItem>
+            <MenuItem name="1" to="/">首页</MenuItem>
             <MenuItem name="2">问答</MenuItem>
             <MenuItem name="3">课堂</MenuItem>
             <MenuItem name="4">求购</MenuItem>
@@ -20,7 +20,13 @@
           <router-view/>
         </section>
       </Content>
-      <Footer></Footer>
+      <Footer>
+        <section>
+            <div>
+              Copyright &copy; 2023 JIMLON.XYZ 版权所有
+            </div>
+        </section>
+      </Footer>
   </Layout>
 </template>
 
@@ -31,6 +37,33 @@
 .ivu-tag-size-small {
   height: 18px !important;
   line-height: 18px !important;
+}
+
+.ivu-layout-footer {
+  background: rgba(45,45,45,1);
+  padding: 50px 0;
+}
+
+.ivu-layout-footer section {
+  width: 1200px;
+  margin: 0 auto;
+  color: rgba(255,255,255,255,.65);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+a {
+  color: @text-dark-color !important;
+}
+
+a:hover {
+  color: @primary-color !important;
+}
+
+.ivu-btn > span i[class^="fa-"] {
+  margin-right: 3px;
+  font-size: 14px;
 }
 
 ::-webkit-scrollbar {

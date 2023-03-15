@@ -26,6 +26,7 @@
                         <img :src="require('@/assets/empty-placeholder.png')"/>
                         <span>暂无回复内容</span>
                     </div>
+                    <Divider />
                     <div class="editor-wrapper">
                         <Editor 
                             :locale="zhHans"

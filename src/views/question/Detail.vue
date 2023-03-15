@@ -98,7 +98,7 @@ const state = reactive({
     .question-meta {
         span {
             color: @text-color-third;
-            margin-right: 10px;
+            margin-right: 15px;
             font-size: 13px;
             i {
                 margin-right: 3px;

@@ -21,6 +21,13 @@ module.exports = defineConfig({
 		}
 	  },
 	chainWebpack: config => {
+
+		config.module.rule('images').set('parser', {
+			dataUrlCondition: {
+				maxSize: -1
+			}
+		})
+
 		config.plugin('html').tap(args => {
             args[0].title = '吉米网 | 走进一个Web3时代'
             return args

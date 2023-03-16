@@ -5,7 +5,16 @@
                 <div class="question-header">
                     <div class="question-title"><Tag color="primary">置顶</Tag><h1>售后问题请通过官网渠道，演示站不作为售后渠道</h1></div>
                     <div class="question-meta">
-                        <span>Jimlon</span>
+                        <Poptip placement="bottom-start" :width="360" trigger="hover">
+                            <span>Jimlon</span>
+                            <template #content>
+                                <div class="user-card">
+                                    <img class="card-cover" :src="require('@/assets/user-card-bg.jpg')" />
+                                    <img class="user-avatar" :src="require('@/assets/demo-avatar.jpg')" />
+                                    <div class="user-name"><span class="name">Jimlon</span><Tag class="primary-plain">管理员</Tag></div>
+                                </div>
+                            </template>
+                        </Poptip>
                         <span><i class="fa-regular fa-calendar-days"></i>三天前</span>
                         <span><i class="fa-regular fa-folder-open"></i>其他</span>
                         <span><i class="fa-sharp fa-regular fa-eye"></i>1552</span>
@@ -81,6 +90,12 @@ const state = reactive({
     margin-bottom: 20px;
 }
 
+.ivu-tag.primary-plain {
+    background: fade(@primary-color, 10%) !important;
+    border-color: @primary-color !important;
+    :deep(span) { color: @primary-color !important;  }
+}
+
 .question-header {
     padding: 20px 20px 10px;
     
@@ -102,6 +117,58 @@ const state = reactive({
             font-size: 13px;
             i {
                 margin-right: 3px;
+            }
+        }
+
+        :deep(.ivu-poptip-body) {
+            padding: 0;
+        }
+        
+        :deep(.ivu-poptip-inner) {
+            box-shadow: 2px 6px 27px 0 rgb(38 38 38 / 20%);
+            overflow: hidden;
+        }
+
+        :deep(.ivu-poptip-arrow) {
+            display: none;
+        }
+
+        .user-card {
+            width: 360px;
+
+            img {
+                display: block;
+            }
+
+            .card-cover {
+                width: 100%;
+                height: 120px;
+                object-fit: fill;
+            }
+
+            .user-avatar {
+                position: relative;
+                border-radius: 50%;
+                width: 80px;
+                height: 80px;
+                margin: -42px auto 0 auto;
+                border: solid 2px #fff;
+                box-sizing: border-box;
+            }
+
+            .user-name {
+                display: flex;
+                justify-content: center;
+                margin: 8px 0;
+                align-items: center;
+
+                span.name {
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: @text-dark-color;
+                    margin-right: 8px;
+                }
+
             }
         }
     }

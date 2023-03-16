@@ -1,5 +1,5 @@
 <template>
-    <Row :gutter="20">
+    <Row :gutter="20" class="section-wrapper">
         <Col :span="17">
             <div class="section">
                 <Tabs value="name1" :animated="false" :bar-gutter="20">
@@ -32,6 +32,9 @@
                     <TabPane label="建议" name="name3">标签三的内容</TabPane>
                     <TabPane label="其他" name="name4">标签三的内容</TabPane>
                 </Tabs>
+                <Row justify="center" class="page-wrapper">
+                    <Page :total="100" />
+                </Row>
             </div>
         </Col>
         <Col :span="7">
@@ -51,8 +54,16 @@
 </script>
 
 <style lang="less" scoped>
+.section-wrapper {
+    margin-bottom: 20px;
+}
+
 .section {
     background: #fff;
+
+    .page-wrapper {
+        padding: 20px 0;
+    }
 }
 
 .section :deep(.ivu-tabs){

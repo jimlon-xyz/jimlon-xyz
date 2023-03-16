@@ -14,6 +14,11 @@ const routes = [
         name: 'questionDetail',
         component: () => import(/* webpackChunkName: "question-detail" */ '@/views/question/Detail.vue')
     },
+    {
+        path: '/user/:id',
+        name: 'userHome',
+        component: () => import(/* webpackChunkName: "user-home" */ '@/views/user/Home.vue')
+    },
 ]
 
 const router = createRouter({

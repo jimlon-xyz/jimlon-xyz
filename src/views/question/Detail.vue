@@ -12,6 +12,25 @@
                                     <img class="card-cover" :src="require('@/assets/user-card-bg.jpg')" />
                                     <img class="user-avatar" :src="require('@/assets/demo-avatar.jpg')" />
                                     <div class="user-name"><span class="name">Jimlon</span><Tag class="primary-plain">管理员</Tag></div>
+                                    <div class="split-divide">
+                                        <Divider />
+                                    </div>
+                                    <div class="user-stats">
+                                        <Row>
+                                            <Col :span="8">
+                                                <span class="value">111111</span>
+                                                <span class="label">文章</span>
+                                            </Col>
+                                            <Col :span="8">
+                                                <span class="value">111111</span>
+                                                <span class="label">问答</span>
+                                            </Col>
+                                            <Col :span="8">
+                                                <span class="value">111111</span>
+                                                <span class="label">粉丝</span>
+                                            </Col>
+                                        </Row>
+                                    </div>
                                 </div>
                             </template>
                         </Poptip>
@@ -96,6 +115,8 @@ const state = reactive({
     :deep(span) { color: @primary-color !important;  }
 }
 
+
+
 .question-header {
     padding: 20px 20px 10px;
     
@@ -140,6 +161,10 @@ const state = reactive({
                 display: block;
             }
 
+            .split-divide {
+                margin: 0 8px;
+            }
+
             .card-cover {
                 width: 100%;
                 height: 120px;
@@ -159,7 +184,7 @@ const state = reactive({
             .user-name {
                 display: flex;
                 justify-content: center;
-                margin: 8px 0;
+                margin: 8px 0 8px;
                 align-items: center;
 
                 span.name {
@@ -169,6 +194,25 @@ const state = reactive({
                     margin-right: 8px;
                 }
 
+            }
+
+            .user-stats {
+                margin: 20px 15px;
+
+                span.value {
+                    color: @text-color !important;
+                    display: block;
+                    text-align: center;
+                    font-size: 18px;
+                    font-weight: 400;
+                }
+
+                span.label {
+                    color: #8590a6 !important;
+                    display: block;
+                    text-align: center;
+                    font-size: 13px;
+                }
             }
         }
     }

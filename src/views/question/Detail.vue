@@ -9,7 +9,7 @@
                             <span>Jimlon</span>
                             <template #content>
                                 <div class="user-card" :style="{'--bgCover': `url(${require('@/assets/user-card-bg.jpg')})`}">
-                                    <img class="user-avatar" :src="require('@/assets/demo-avatar.jpg')" />
+                                    <img class="user-avatar" src="@/assets/demo-avatar.jpg" />
                                     <div class="user-name"><router-link class="name" :to="{name: 'userHome', params: {id: 1}}">Jimlon</router-link><Tag class="primary-plain">管理员</Tag></div>
                                     <div class="split-divide">
                                         <Divider />
@@ -56,7 +56,7 @@
                         <Button type="primary"><i class="fa-sharp fa-solid fa-feather-pointed"></i>我来回复</Button>
                     </div>
                     <div class="empty-holder">
-                        <img :src="require('@/assets/empty-placeholder.png')"/>
+                        <img src="@/assets/empty-placeholder.png"/>
                         <span>暂无回复内容</span>
                     </div>
                     <Divider />

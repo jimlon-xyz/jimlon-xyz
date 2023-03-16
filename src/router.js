@@ -7,7 +7,7 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: () => import(/* webpackChunkName: "question-list" */ '@/views/question/List.vue')
+        component: () => import('@/views/question/List.vue')
     },
     {
         path: '/question/:id',

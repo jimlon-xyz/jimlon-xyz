@@ -2,7 +2,7 @@
   <Layout>
       <Header class="header">
         <section>
-          <img :src="require('./assets/jimlogo-dark.png')" height="42" />
+          <img src="@/assets/jimlogo-dark.png" height="42" />
           <Menu mode="horizontal">
             <MenuItem name="1" to="/">首页</MenuItem>
             <!-- <MenuItem name="2">问答</MenuItem> -->

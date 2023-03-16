@@ -16,22 +16,26 @@
                                     </div>
                                     <div class="user-stats">
                                         <Row>
-                                            <Col :span="8">
+                                            <Col :span="6">
                                                 <span class="value">1356</span>
                                                 <span class="label">文章</span>
                                             </Col>
-                                            <Col :span="8">
+                                            <Col :span="6">
                                                 <span class="value">13</span>
                                                 <span class="label">问答</span>
                                             </Col>
-                                            <Col :span="8">
+                                            <Col :span="6">
+                                                <span class="value">27</span>
+                                                <span class="label">评论</span>
+                                            </Col>
+                                            <Col :span="6">
                                                 <span class="value">25</span>
                                                 <span class="label">粉丝</span>
                                             </Col>
                                         </Row>
                                     </div>
                                     <div class="user-action">
-                                        <Row justify="space-around" align="middle">
+                                        <Row justify="center" align="middle">
                                             <Button type="primary" icon="md-add">关注他</Button>
                                             <Button icon="md-mail">发私信</Button>
                                         </Row>
@@ -113,14 +117,6 @@ const state = reactive({
     background: #fff;
     margin-bottom: 20px;
 }
-
-.ivu-tag.primary-plain {
-    background: fade(@primary-color, 10%) !important;
-    border-color: @primary-color !important;
-    :deep(span) { color: @primary-color !important;  }
-}
-
-
 
 .question-header {
     padding: 20px 20px 10px;
@@ -230,6 +226,15 @@ const state = reactive({
 
             .user-action {
                 margin-bottom: 20px;
+
+                :deep(button) {
+                    margin-right: 8px;
+                }
+
+                :deep(button + button) {
+                    margin-left: 8px;
+                    margin-right: 0;
+                }
             }
         }
     }

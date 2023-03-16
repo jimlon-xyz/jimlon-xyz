@@ -6,8 +6,9 @@
           <Menu mode="horizontal">
             <MenuItem name="1" to="/">首页</MenuItem>
             <!-- <MenuItem name="2">问答</MenuItem> -->
-            <MenuItem name="3">课堂</MenuItem>
-            <MenuItem name="4">求购</MenuItem>
+            <MenuItem name="2">课程</MenuItem>
+            <MenuItem name="3">直播</MenuItem>
+            <MenuItem name="4">其他</MenuItem>
           </Menu>
           <div class="right-side">
             <span>登录</span><Divider type="vertical" /><span>注册</span>
@@ -34,6 +35,12 @@
 </script>
 
 <style lang="less">
+.ivu-tag.primary-plain {
+    background: fade(@primary-color, 10%) !important;
+    border-color: @primary-color !important;
+    span { color: @primary-color !important;  }
+}
+
 .ivu-tag-size-small {
   height: 18px !important;
   line-height: 18px !important;

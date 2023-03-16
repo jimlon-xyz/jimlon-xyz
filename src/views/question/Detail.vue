@@ -8,27 +8,32 @@
                         <Poptip placement="bottom-start" :width="360" trigger="hover">
                             <span>Jimlon</span>
                             <template #content>
-                                <div class="user-card">
-                                    <img class="card-cover" :src="require('@/assets/user-card-bg.jpg')" />
+                                <div class="user-card" :style="{'--bgCover': `url(${require('@/assets/user-card-bg.jpg')})`}">
                                     <img class="user-avatar" :src="require('@/assets/demo-avatar.jpg')" />
-                                    <div class="user-name"><span class="name">Jimlon</span><Tag class="primary-plain">管理员</Tag></div>
+                                    <div class="user-name"><router-link class="name" :to="{name: 'userHome', params: {id: 1}}">Jimlon</router-link><Tag class="primary-plain">管理员</Tag></div>
                                     <div class="split-divide">
                                         <Divider />
                                     </div>
                                     <div class="user-stats">
                                         <Row>
                                             <Col :span="8">
-                                                <span class="value">111111</span>
+                                                <span class="value">1356</span>
                                                 <span class="label">文章</span>
                                             </Col>
                                             <Col :span="8">
-                                                <span class="value">111111</span>
+                                                <span class="value">13</span>
                                                 <span class="label">问答</span>
                                             </Col>
                                             <Col :span="8">
-                                                <span class="value">111111</span>
+                                                <span class="value">25</span>
                                                 <span class="label">粉丝</span>
                                             </Col>
+                                        </Row>
+                                    </div>
+                                    <div class="user-action">
+                                        <Row justify="space-around" align="middle">
+                                            <Button type="primary" icon="md-add">关注他</Button>
+                                            <Button icon="md-mail">发私信</Button>
                                         </Row>
                                     </div>
                                 </div>
@@ -156,13 +161,21 @@ const state = reactive({
 
         .user-card {
             width: 360px;
+            padding-top: 120px;
+            background: var(--bgCover) left top no-repeat;
+            background-size: 100% 120px;
+
+            :deep(.ivu-divider) {
+                background: rgba(0,0,0,0.05);
+                margin: 20px 0;
+            }
 
             img {
                 display: block;
             }
 
             .split-divide {
-                margin: 0 8px;
+                margin: 0 12px;
             }
 
             .card-cover {
@@ -187,7 +200,7 @@ const state = reactive({
                 margin: 8px 0 8px;
                 align-items: center;
 
-                span.name {
+                a.name {
                     font-size: 16px;
                     font-weight: 600;
                     color: @text-dark-color;
@@ -213,6 +226,10 @@ const state = reactive({
                     text-align: center;
                     font-size: 13px;
                 }
+            }
+
+            .user-action {
+                margin-bottom: 20px;
             }
         }
     }

@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout class="page-wrapper">
       <Header class="header">
         <section>
           <img src="@/assets/jimlogo-dark.png" height="42" />
@@ -11,7 +11,7 @@
             <MenuItem name="4">其他</MenuItem>
           </Menu>
           <div class="right-side">
-            <span>登录</span><Divider type="vertical" /><span>注册</span>
+            <span @click="showLogin">登录</span><Divider type="vertical" /><span @click="showLogin">注册</span>
             <Button type="primary" size="small">投稿</Button>
           </div>
         </section>
@@ -21,20 +21,109 @@
           <router-view/>
         </main>
       </Content>
-      <!-- <Footer>
-        <section>
-            <div>
-              Copyright &copy; 2023 JIMLON.XYZ 版权所有
+
+
+      <Modal
+            :transition-names="['move-up', 'fade']"
+            v-model="state.showLogin"
+            :width="420"
+            footer-hide>
+            <div class="login-form">
+                <img class="brand-logo" :src="require('@/assets/jimlogo-dark.png')" height="42"/>
+                <Form>
+                  <FormItem>
+                      <Input size="large" type="text" placeholder="请输入电子邮箱/用户名">
+                        <template #prefix>
+                          <i class="fa-light fa-user"></i>
+                        </template>
+                      </Input>
+                  </FormItem>
+                  <FormItem>
+                      <Input size="large" type="text" placeholder="请输入登录密码">
+                        <template #prefix>
+                          <i class="fa-light fa-lock-keyhole"></i>
+                        </template>
+                      </Input>
+                  </FormItem>
+                  <FormItem>
+                      <Row justify="space-between" align="middle">
+                          <Checkbox v-model="single">记住我</Checkbox>
+                          <span class="primary">忘记密码？</span>
+                      </Row>
+                  </FormItem>
+                  <FormItem>
+                      <Button type="primary" size="large" long>登 录</Button>
+                  </FormItem>
+                  <FormItem>
+                      还没有账号？<span class="primary">立即注册</span>
+                  </FormItem>
+                  <Divider>第三方快捷登录</Divider>
+                  <Row justify="center" align="middle">
+                    <img :src="require('@/assets/MetaMask_Fox.svg.png')" height="36"/>
+                  </Row>
+                </Form>
             </div>
-        </section>
-      </Footer> -->
+        </Modal>
+      
   </Layout>
 </template>
 
-<script>
+<script setup>
+import { reactive } from "vue"
+
+const state = reactive({
+  showLogin: false  
+})
+
+function showLogin() {
+  state.showLogin = true
+
+}
 </script>
 
 <style lang="less">
+html, body, #app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px; 
+    background: transparent;
+}
+
+::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: rgba(0,0,0,0);
+    transition: background-color .5s ease-in;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.35);
+}
+
+::-webkit-scrollbar-button {
+    background-color: transparent;
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+    width: 5px;
+    height: 5px;
+}
+
+span.primary {
+  color: @primary-color;
+}
+
 .ivu-tag.primary-plain {
     background: fade(@primary-color, 10%) !important;
     border-color: @primary-color !important;
@@ -73,36 +162,9 @@ a:hover {
   font-size: 14px;
 }
 
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px; 
-    background: transparent;
-}
-
-::-webkit-scrollbar-track{
-    background-color: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 6px;
-    background-color: rgba(0,0,0,0);
-    transition: background-color .5s ease-in;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0,0,0,0.35);
-}
-
-::-webkit-scrollbar-button {
-    background-color: transparent;
-    width: 5px;
-    height: 5px;
-}
-
-::-webkit-scrollbar-corner {
-    background: transparent;
-    width: 5px;
-    height: 5px;
+.page-wrapper {
+  height: 100%;
+  overflow: hidden;
 }
 
 .header {
@@ -139,6 +201,14 @@ a:hover {
 .header section .right-side {
   display: flex;
   align-items: center;
+
+  > span {
+    cursor: pointer;
+    &:hover {
+      color: @primary-color;
+    }
+
+  }
 }
 
 .header section .right-side .ivu-btn {
@@ -148,7 +218,8 @@ a:hover {
 .content {
   margin-top: 64px;
   background: #f5f5f5;
-  min-height: calc(100vh - 64px);
+  flex: 1;
+  overflow: auto;
 }
 
 .content main {
@@ -156,4 +227,32 @@ a:hover {
   margin: 0 auto;
   padding: 20px 0;
 }
+
+.login-form {
+  padding: 34px 9px 9px 9px;
+
+
+  .ivu-input-wrapper-large .ivu-input-prefix i, .ivu-input-wrapper-large .ivu-input-suffix i {
+    font-size: 16px;
+  }
+
+
+  .brand-logo {
+    display: block;
+    margin: 0 auto 40px auto;
+  }
+
+  .ivu-input-large {
+    font-size: 14px;
+    &::placeholder, &::-webkit-input-placeholder {
+      color: rgba(38,38,38,0.6);
+    }
+  }
+
+  .ivu-divider > span  {
+    font-size: 14px;
+  }
+
+}
+
 </style>

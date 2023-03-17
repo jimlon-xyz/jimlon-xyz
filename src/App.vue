@@ -17,17 +17,17 @@
         </section>
       </Header>
       <Content class="content">
-        <section>
+        <main>
           <router-view/>
-        </section>
+        </main>
       </Content>
-      <Footer>
+      <!-- <Footer>
         <section>
             <div>
               Copyright &copy; 2023 JIMLON.XYZ 版权所有
             </div>
         </section>
-      </Footer>
+      </Footer> -->
   </Layout>
 </template>
 
@@ -148,9 +148,10 @@ a:hover {
 .content {
   margin-top: 64px;
   background: #f5f5f5;
+  min-height: calc(100vh - 64px);
 }
 
-.content section {
+.content main {
   width: 1200px;
   margin: 0 auto;
   padding: 20px 0;

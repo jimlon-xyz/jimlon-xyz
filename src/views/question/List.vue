@@ -71,12 +71,11 @@
 }
 
 .section :deep(.ivu-tabs-nav .ivu-tabs-tab) {
-    height: 54px;
+    /* height: 54px;
     vertical-align: middle;
     display: inline-flex;
-    align-items: center;
-    padding: 8px 0;
-    margin-right: 20px;
+    align-items: center; */
+    padding: 12px 16px;
  }
 
  .section :deep(.ivu-tabs) .ivu-tabs-content .topic-content {

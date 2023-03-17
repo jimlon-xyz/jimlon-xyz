@@ -71,17 +71,19 @@
                       </Input>
                   </FormItem>
                   <FormItem>
-                      <Row :gutter="8">
-                        <Col :span="16">
+                      <Row :gutter="0">
+                        <Col :span="24">
                           <Input size="large" type="text" placeholder="请输入验证码">
                             <template #prefix>
                               <i class="fa-light fa-shield-check"></i>
                             </template>
+                            
                           </Input>
+                          <span class="primary link btn">获取验证码</span>
                         </Col>
-                        <Col :span="8">
+                        <!-- <Col :span="8">
                           <Button class="font-size-14" long size="large">获取验证码</Button>
-                        </Col>
+                        </Col> -->
                       </Row>
                   </FormItem>
                   <FormItem>
@@ -288,6 +290,16 @@ a:hover {
 
   .ivu-input-wrapper-large .ivu-input-prefix i, .ivu-input-wrapper-large .ivu-input-suffix i {
     font-size: 16px;
+  }
+
+  span.btn {
+    position: absolute;
+    white-space: nowrap;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+    appearance: button;
   }
 
 

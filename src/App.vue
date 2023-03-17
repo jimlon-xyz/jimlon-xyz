@@ -30,7 +30,7 @@
             footer-hide>
             <div class="login-form">
                 <img class="brand-logo" :src="require('@/assets/jimlogo-dark.png')" height="42"/>
-                <Form>
+                <Form  v-if="state.formType == 'login'">
                   <FormItem>
                       <Input size="large" type="text" placeholder="请输入电子邮箱/用户名">
                         <template #prefix>
@@ -48,14 +48,61 @@
                   <FormItem>
                       <Row justify="space-between" align="middle">
                           <Checkbox v-model="single">记住我</Checkbox>
-                          <span class="primary">忘记密码？</span>
+                          <span class="primary link">忘记密码？</span>
                       </Row>
                   </FormItem>
                   <FormItem>
                       <Button type="primary" size="large" long>登 录</Button>
                   </FormItem>
                   <FormItem>
-                      还没有账号？<span class="primary">立即注册</span>
+                      还没有账号？<span class="primary link" @click="state.formType = 'register'">立即注册</span>
+                  </FormItem>
+                  <Divider>第三方快捷登录</Divider>
+                  <Row justify="center" align="middle">
+                    <img :src="require('@/assets/MetaMask_Fox.svg.png')" height="36"/>
+                  </Row>
+                </Form>
+                <Form  v-else>
+                  <FormItem>
+                      <Input size="large" type="text" placeholder="请输入电子邮箱">
+                        <template #prefix>
+                          <i class="fa-light fa-user"></i>
+                        </template>
+                      </Input>
+                  </FormItem>
+                  <FormItem>
+                      <Row :gutter="8">
+                        <Col :span="16">
+                          <Input size="large" type="text" placeholder="请输入验证码">
+                            <template #prefix>
+                              <i class="fa-light fa-shield-check"></i>
+                            </template>
+                          </Input>
+                        </Col>
+                        <Col :span="8">
+                          <Button class="font-size-14" long size="large">获取验证码</Button>
+                        </Col>
+                      </Row>
+                  </FormItem>
+                  <FormItem>
+                      <Input size="large" type="text" placeholder="请输入登录密码">
+                        <template #prefix>
+                          <i class="fa-light fa-lock-keyhole"></i>
+                        </template>
+                      </Input>
+                  </FormItem>
+                  <FormItem>
+                      <Input size="large" type="text" placeholder="请再次输入登录密码">
+                        <template #prefix>
+                          <i class="fa-light fa-lock-keyhole"></i>
+                        </template>
+                      </Input>
+                  </FormItem>
+                  <FormItem>
+                      <Button type="primary" size="large" long>立即注册</Button>
+                  </FormItem>
+                  <FormItem>
+                      已经有账号？<span class="primary link" @click="state.formType = 'login'">前往登录</span>
                   </FormItem>
                   <Divider>第三方快捷登录</Divider>
                   <Row justify="center" align="middle">
@@ -64,7 +111,6 @@
                 </Form>
             </div>
         </Modal>
-      
   </Layout>
 </template>
 
@@ -72,7 +118,8 @@
 import { reactive } from "vue"
 
 const state = reactive({
-  showLogin: false  
+  showLogin: false,
+  formType: 'login'
 })
 
 function showLogin() {
@@ -122,6 +169,13 @@ html, body, #app {
 
 span.primary {
   color: @primary-color;
+  &.link {
+    cursor: pointer;
+  }
+}
+
+.font-size-14 {
+  font-size: 14px;
 }
 
 .ivu-tag.primary-plain {

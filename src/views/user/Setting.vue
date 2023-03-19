@@ -4,20 +4,20 @@
             <aside>
                 <Menu active-name="1" width="auto">
                     <MenuItem name="1">
-                        <Icon type="md-document" />
+                        <i class="fa-regular fa-id-card"></i>
                         个人资料
                     </MenuItem>
                     <MenuItem name="2">
-                        <Icon type="md-chatbubbles" />
+                        <i class="fa-regular fa-gear"></i>
                         账号设置
                     </MenuItem>
                     <MenuItem name="3">
-                        <Icon type="md-chatbubbles" />
+                        <i class="fa-regular fa-bell"></i>
                         消息设置
                     </MenuItem>
                     <MenuItem name="4">
-                        <Icon type="md-chatbubbles" />
-                        评论管理
+                        <i class="fa-regular fa-wallet"></i>
+                        钱包账户
                     </MenuItem>
                 </Menu>
             </aside>

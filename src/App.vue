@@ -117,9 +117,16 @@
 </template>
 
 <script setup>
-import { ref, reactive, getCurrentInstance } from "vue"
-import { useRouter } from "vue-router"
+import { ref, reactive, getCurrentInstance, watch } from "vue"
+import { useRouter, onBeforeRouteUpdate } from "vue-router"
 import useMitt from "./utils/mitt"
+
+const router = useRouter()
+
+watch(
+  () => router.currentRoute.value, 
+  () => { document.querySelector('#content').scrollTop = 0 }
+)
 
 const state = reactive({
   showLogin: false,

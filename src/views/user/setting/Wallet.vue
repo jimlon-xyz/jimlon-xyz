@@ -1,6 +1,6 @@
 <template>
     <div class="section">
-        <h1>个人资料</h1>
+        <h1>钱包账户</h1>
         <Divider />
         <Row :gutter="40">
             <Col :span="16">

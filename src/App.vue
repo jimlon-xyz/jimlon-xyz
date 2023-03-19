@@ -212,10 +212,6 @@ span.primary {
   flex-direction: column;
 }
 
-a {
-  color: @text-dark-color !important;
-}
-
 a:hover {
   color: @primary-color !important;
 }

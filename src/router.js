@@ -31,6 +31,21 @@ const routes = [
                 name: 'userSettingProfile',
                 component: () => import(/* webpackChunkName: "user-setting-profile" */ '@/views/user/setting/Profile.vue')
             },
+            {
+                path: 'account',
+                name: 'userSettingAccount',
+                component: () => import(/* webpackChunkName: "user-setting-account" */ '@/views/user/setting/Account.vue')
+            },
+            {
+                path: 'message',
+                name: 'userSettingMessage',
+                component: () => import(/* webpackChunkName: "user-setting-message" */ '@/views/user/setting/Message.vue')
+            },
+            {
+                path: 'wallet',
+                name: 'userSettingWallet',
+                component: () => import(/* webpackChunkName: "user-setting-wallet" */ '@/views/user/setting/Wallet.vue')
+            },
         ]
     },
     

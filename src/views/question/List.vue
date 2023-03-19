@@ -88,6 +88,12 @@
         line-height: 22px;
         text-overflow: ellipsis;
         white-space: nowrap;
+        a {
+            color: @text-dark-color !important;
+            &:hover {
+                color: @primary-color !important;
+            }
+        }
     }
 
     .topic-meta {

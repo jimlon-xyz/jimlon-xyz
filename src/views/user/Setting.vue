@@ -2,20 +2,20 @@
     <Row :gutter="20">
         <Col>
             <aside>
-                <Menu active-name="1" width="auto">
-                    <MenuItem name="1">
+                <Menu :active-name="$route.name" width="auto">
+                    <MenuItem name="userSettingProfile" :to="{name:'userSettingProfile'}">
                         <i class="fa-regular fa-id-card"></i>
                         个人资料
                     </MenuItem>
-                    <MenuItem name="2">
+                    <MenuItem name="userSettingAccount" :to="{name:'userSettingAccount'}">
                         <i class="fa-regular fa-gear"></i>
                         账号设置
                     </MenuItem>
-                    <MenuItem name="3">
+                    <MenuItem name="userSettingMessage" :to="{name:'userSettingMessage'}">
                         <i class="fa-regular fa-bell"></i>
                         消息设置
                     </MenuItem>
-                    <MenuItem name="4">
+                    <MenuItem name="userSettingWallet" :to="{name:'userSettingWallet'}">
                         <i class="fa-regular fa-wallet"></i>
                         钱包账户
                     </MenuItem>

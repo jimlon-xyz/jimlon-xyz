@@ -38,12 +38,25 @@ aside {
     width: 240px;
     background: #fff;
 
-    :deep(.ivu-menu-light.ivu-menu-vertical:after) {
-        display: none;
+    :deep(.ivu-menu-light.ivu-menu-vertical) {
+        &:after, &.ivu-menu-item-active:after { display: none !important; }
     }
 
-    :deep(.ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:after) {
-        display: none !important;
+    .ivu-menu-light .ivu-menu-item {
+        color: #4e5969;
+
+        i[class^="fa-"] {
+            color: #86909c;
+            font-size: 15px;
+        }
+
+        &.ivu-menu-item-active {
+            color: @primary-color;
+
+            i[class^="fa-"] {
+                color: @primary-color;
+            }
+        }
     }
 }
 

@@ -5,7 +5,6 @@
           <img src="@/assets/jimlogo-dark.png" height="42" />
           <Menu mode="horizontal">
             <MenuItem name="1" to="/">首页</MenuItem>
-            <!-- <MenuItem name="2">问答</MenuItem> -->
             <MenuItem name="2">课程</MenuItem>
             <MenuItem name="3">直播</MenuItem>
             <MenuItem name="4">其他</MenuItem>
@@ -16,12 +15,11 @@
           </div>
         </section>
       </Header>
-      <Content class="content">
+      <Content id="content" class="content">
         <main>
           <router-view/>
         </main>
       </Content>
-
 
       <Modal
             :transition-names="['move-up', 'fade']"
@@ -52,7 +50,7 @@
                       </Row>
                   </FormItem>
                   <FormItem>
-                      <Button type="primary" size="large" long>登 录</Button>
+                      <Button type="primary" size="large" long @click="loginAction">登 录</Button>
                   </FormItem>
                   <FormItem>
                       还没有账号？<span class="primary link" @click="state.formType = 'register'">立即注册</span>
@@ -117,16 +115,23 @@
 </template>
 
 <script setup>
-import { reactive } from "vue"
+import { ref, reactive, getCurrentInstance } from "vue"
+import { useRouter } from "vue-router"
+import useMitt from "./utils/mitt"
 
 const state = reactive({
   showLogin: false,
   formType: 'login'
 })
 
+const { proxy } = getCurrentInstance()
+
 function showLogin() {
   state.showLogin = true
+}
 
+function loginAction() {
+  proxy.$Message.success('登录成功')
 }
 </script>
 
@@ -223,7 +228,7 @@ a:hover {
   overflow: hidden;
 }
 
-.header {
+.ivu-layout-header.header {
   background: #fff;
   box-shadow: 0 0 3px 1px rgba(38,38,38,0.06);
   position: fixed;
@@ -278,7 +283,7 @@ a:hover {
   overflow: auto;
 }
 
-.content main {
+.content > main {
   width: 1200px;
   margin: 0 auto;
   padding: 20px 0;

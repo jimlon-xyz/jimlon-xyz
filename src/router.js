@@ -1,6 +1,4 @@
 import ViewUIPlus from 'view-ui-plus'
-
-import { storeToRefs } from 'pinia'
 import {createRouter, createWebHashHistory} from 'vue-router'
 
 const routes = [
@@ -19,15 +17,31 @@ const routes = [
         name: 'userHome',
         component: () => import(/* webpackChunkName: "user-home" */ '@/views/user/Home.vue')
     },
+    {
+        path: '/user/center/sign',
+        name: 'userHome',
+        component: () => import(/* webpackChunkName: "user-home" */ '@/views/user/Home.vue')
+    },
+    {
+        path: '/user/setting',
+        component: () => import(/* webpackChunkName: "user-setting-layout" */ '@/views/user/Setting.vue'),
+        children: [
+            {
+                path: 'profile',
+                name: 'userSettingProfile',
+                component: () => import(/* webpackChunkName: "user-setting-profile" */ '@/views/user/setting/Profile.vue')
+            },
+        ]
+    },
+    
 ]
 
 const router = createRouter({
     routes,
-    history: createWebHashHistory()
+    history: createWebHashHistory(),
 })
 
 router.beforeEach((to, from, next) => {
-    document.documentElement.scrollTop = 0
     ViewUIPlus.LoadingBar.start()
     next()
 })

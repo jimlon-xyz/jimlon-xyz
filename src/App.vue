@@ -2,7 +2,9 @@
   <Layout class="page-wrapper">
       <Header class="header">
         <section>
-          <img src="@/assets/jimlogo-dark.png" height="42" />
+          <router-link to="/">
+            <img class="brand-logo" src="@/assets/jimlogo-dark.png" height="42" />
+          </router-link>
           <Menu mode="horizontal">
             <MenuItem name="1" to="/">首页</MenuItem>
             <MenuItem name="2">课程</MenuItem>
@@ -244,6 +246,10 @@ a:hover {
   margin: 0 auto;
   display: flex;
   align-items: center;
+}
+
+.header section img.brand-logo {
+  display: block;
 }
 
 .header section .ivu-menu {

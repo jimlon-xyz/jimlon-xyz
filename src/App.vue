@@ -12,7 +12,41 @@
             <MenuItem name="4">其他</MenuItem>
           </Menu>
           <div class="right-side">
-            <span @click="showLogin">登录</span><Divider type="vertical" /><span @click="showLogin">注册</span>
+            <template v-if="state.user">
+              <Poptip placement="bottom-end" :width="280">
+                <template #content>
+                  <div class="user-card">
+                     <div class="user-card-row">
+                        <Avatar class="avatar" :src="state.user.avatar" :size="48" />
+                      <div class="user-detail">
+                        <div class="name">{{state.user.user_name}}</div>
+                        <div class="summary">金币：100<i class="fa-sharp fa-regular fa-angle-right"></i></div>
+                      </div>
+                     </div>
+                     <div class="user-level">
+                        <Row justify="space-between" align="middle">
+                          <div class="label">吉友等级<strong>JY.1</strong></div>
+                          <div class="exp">1 / 15<i class="fa-sharp fa-regular fa-angle-right"></i></div>
+                        </Row>
+                        <Progress :percent="25" hide-info :stroke-width="6" />
+                     </div>
+                    <!-- <Divider /> -->
+                    <Menu width="auto">
+                      <MenuItem name="1">我的主页</MenuItem>
+                      <MenuItem name="2">个人资料</MenuItem>
+                      <MenuItem name="3">钱包账户</MenuItem>
+                      <MenuItem name="4">账号设置</MenuItem>
+                      <Divider />
+                      <MenuItem name="5">退出</MenuItem>
+                    </Menu>
+                  </div>
+                </template>
+                <Avatar :src="state.user.avatar" :size="28" />
+              </Poptip>
+            </template>
+            <template v-else>
+              <span @click="showLogin">登录</span><Divider type="vertical" /><span @click="showLogin">注册</span>
+            </template>
             <Button type="primary" size="small">投稿</Button>
           </div>
         </section>
@@ -117,11 +151,21 @@
 </template>
 
 <script setup>
-import { ref, reactive, getCurrentInstance, watch } from "vue"
+import { ref, reactive, getCurrentInstance, watch, computed } from "vue"
 import { useRouter, onBeforeRouteUpdate } from "vue-router"
+import { useStore } from '@/stores'
 import useMitt from "./utils/mitt"
-import useAxios from "./utils/axios"
+import * as api from "./api"
 
+const state = reactive({
+  showLogin: false,
+  formType: 'login',
+  form: {},
+  regFrom: {},
+  user: computed(() => useStore().$state.user)
+})
+
+const { proxy } = getCurrentInstance()
 const router = useRouter()
 
 watch(
@@ -129,22 +173,12 @@ watch(
   () => { document.querySelector('#content').scrollTop = 0 }
 )
 
-const state = reactive({
-  showLogin: false,
-  formType: 'login',
-  form: {},
-  regFrom: {}
-})
-
-const { proxy } = getCurrentInstance()
-
 function showLogin() {
   state.showLogin = true
-  
 }
 
 function signInAction() {
-  useAxios.post('/api/user/signIn', {
+  api.userApi.signIn({
     email: state.form.email,
     password: state.form.password,
     remember: state.form.remember,
@@ -152,11 +186,13 @@ function signInAction() {
       proxy.$Message.success(result.errMsg)
       state.showLogin = false
       state.form = {}
+      useStore().$state.token = result.result.token
+      useStore().$state.user = result.result.user
   }).catch(null)
 }
 
 function signUpAction() {
-  useAxios.post('/api/user/signUp', {
+  api.userApi.signUp({
     email: state.regFrom.email,
     code: state.regFrom.code,
     password: state.regFrom.password,
@@ -166,7 +202,7 @@ function signUpAction() {
 }
 
 function getSignUpCode() {
-  useAxios.post('/api/user/getSignUpCode', {
+  api.userApi.getSignUpCode({
     email: state.regFrom.email,
   }).then(result => {
     console.log(result)
@@ -218,6 +254,23 @@ span.primary {
   &.link {
     cursor: pointer;
   }
+}
+
+.ivu-poptip-arrow {
+  display: none;
+}
+
+.ivu-poptip-popper[x-placement^="bottom"] {
+  padding: 0;
+}
+
+.ivu-poptip-popper[x-placement^="bottom"] .ivu-poptip-body {
+  padding: 20px;
+}
+
+.ivu-poptip-inner {
+  box-shadow: 0 0 24px rgb(81 87 103 / 16%);
+  border: 1px solid #e4e6eb;
 }
 
 .font-size-14 {
@@ -285,7 +338,7 @@ a:hover {
   display: block;
 }
 
-.header section .ivu-menu {
+.header section > .ivu-menu {
   margin-left: 60px;
   flex: 1;
 }
@@ -296,6 +349,104 @@ a:hover {
 
 .header section .ivu-menu.ivu-menu-horizontal .ivu-menu-item {
   border: 0;
+}
+
+
+.user-card {
+
+  .ivu-divider-horizontal {
+    margin: 6px 0;
+  }
+
+  > .ivu-divider-horizontal {
+    margin: 20px 0 6px 0;
+  }
+
+  .ivu-menu-vertical .ivu-menu-item {
+    padding: 0;
+    line-height: 32px;
+  }
+
+  .ivu-menu-vertical.ivu-menu-light:after {
+    display: none;
+  }
+
+  .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) {
+    background: rgba(0,0,0,0);
+  }
+
+  .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu):after {
+    display: none;
+  }
+
+  .user-level {
+    margin: 16px 0;
+    background: linear-gradient(to bottom, #ebf2ff, #f8f8ff);
+    border-radius: 4px;
+    padding: 6px 8px;
+
+    .label {
+      color: #1e80ff;
+      font-size: 12px;
+      line-height: 18px;
+      > strong {
+        margin-left: 4px;
+      }
+    }
+
+    .exp {
+      color: #1e80ff;
+      font-size: 12px;
+      line-height: 18px;
+      i[class^="fa-"] {
+        margin-left: 4px;
+      }
+    }
+
+
+    .ivu-progress-inner {
+      background: rgb(30 128 255 / 20%);
+    }
+
+
+  }
+  
+  .user-card-row {
+    display: flex;
+
+    .avatar {
+      margin-right: 12px;
+    }
+
+    .user-detail {
+      flex: 1;
+
+      .name {
+        font-size: 16px;
+        line-height: 18px;
+        color: #252933;
+        margin-top: 2px;
+        margin-bottom: 8px;
+      }
+
+      .summary {
+        font-size: 12px;
+        color: #252933;
+        display: flex;
+        align-items: center;
+
+        i[class^="fa-"] {
+          margin-left: 6px;
+          color: #8a919f
+        }
+
+      }
+
+    }
+
+    
+  }
+
 }
 
 .header section .right-side {

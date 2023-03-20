@@ -1,8 +1,9 @@
 import axios from "@/utils/axios"
 
 export const userApi = {
-    signIn: (data) => axios.post("/api/user/signIn", data),
-    signUp: (data) => axios.post("/api/user/signUp", data),
-    getSignUpCode: (data) => axios.post("/api/user/getSignUpCode", data)
+    login: (data) => axios.post("/api/user/login", data),
+    logout: () => axios.post("/api/user/logout", data),
+    register: (data) => axios.post("/api/user/register", data),
+    getRegisterCode: (data) => axios.post("/api/user/getRegisterCode", data)
 
 }

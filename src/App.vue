@@ -37,7 +37,7 @@
                       <MenuItem name="3" :to="{name:'userSettingWallet'}">钱包账户</MenuItem>
                       <MenuItem name="4" :to="{name:'userSettingAccount'}">账号设置</MenuItem>
                       <Divider />
-                      <MenuItem name="5">退出</MenuItem>
+                      <MenuItem name="5" @click="logoutAction">退出</MenuItem>
                     </Menu>
                   </div>
                 </template>
@@ -177,8 +177,14 @@ function showLogin() {
   state.showLogin = true
 }
 
-function signInAction() {
-  api.userApi.signIn({
+function logutAction() {
+  api.userApi.logout().then(result => {
+
+  }).catch(null)
+}
+
+function loginAction() {
+  api.userApi.login({
     email: state.form.email,
     password: state.form.password,
     remember: state.form.remember,
@@ -191,8 +197,8 @@ function signInAction() {
   }).catch(null)
 }
 
-function signUpAction() {
-  api.userApi.signUp({
+function registerAction() {
+  api.userApi.register({
     email: state.regFrom.email,
     code: state.regFrom.code,
     password: state.regFrom.password,
@@ -201,8 +207,8 @@ function signUpAction() {
   })
 }
 
-function getSignUpCode() {
-  api.userApi.getSignUpCode({
+function getRegisterCode() {
+  api.userApi.getRegisterCode({
     email: state.regFrom.email,
   }).then(result => {
     console.log(result)

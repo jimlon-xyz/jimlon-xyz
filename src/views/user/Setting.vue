@@ -1,6 +1,6 @@
 <template>
     <Row :gutter="20">
-        <Col>
+        <Col flex="240px">
             <aside>
                 <Menu :active-name="$route.name" width="auto">
                     <MenuItem name="userSettingProfile" :to="{name:'userSettingProfile'}">
@@ -22,7 +22,7 @@
                 </Menu>
             </aside>
         </Col>
-        <Col :span="18">
+        <Col flex="auto">
             <main>
                 <router-view/>
             </main>

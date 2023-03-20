@@ -1,28 +1,26 @@
 <template>
     <Row :gutter="20">
         <Col :span="17">
-            <div class="user-home-cover" :style="{'--height': '180px', '--bgCover': `url(${require('@/assets/user-card-bg.jpg')})`}"></div>
+            <div class="user-home-cover" :style="{'--height': '180px', '--bgCover': `url(${state.user?.home_cover})`}"></div>
             <div class="user-meta">
                     <div class="meta-wrapper">
-                        <img class="user-avatar" src="@/assets/demo-avatar.jpg" />
+                        <img class="user-avatar" :src="state.user?.avatar" />
                         <div class="user-box">
                             <div class="top-line">
-                                <span class="name">Jimlon</span>
+                                <span class="name">{{state.user?.user_name || '{name}'}}</span>
                                 <Tag class="primary-plain">管理员</Tag>
                             </div>
-                            <div class="second-line">
-                                这是一段个人描述
-                            </div>
+                            <div class="second-line">{{state.user?.home_description || '没有描述'}}</div>
                         </div>
                         <div class="user-stat">
                             <Row align="middle">
                                 <div>
-                                    <span class="value">156</span>
+                                    <span class="value">{{state.user?.fans_num || 0}}</span>
                                     <span class="label">粉丝</span>
                                 </div>
                                 <Divider type="vertical" class="divi"/>
                                 <div>
-                                    <span class="value">795</span>
+                                    <span class="value">{{state.user?.follow_num || 0}}</span>
                                     <span class="label">关注</span>
                                 </div>
                             </Row>
@@ -56,7 +54,25 @@
     </Row>
 </template>
 
-<script setup></script>
+<script setup>
+import * as api from "@/api"
+import { onBeforeMount, onMounted, reactive } from "vue"
+import { useRoute } from "vue-router"
+
+const state = reactive({
+    user: null
+})
+
+const route = useRoute()
+onBeforeMount(() => {
+
+    api.userApi.getBaseInfo(route.params.id).then(result => {
+        state.user = result.result
+    })
+
+})
+
+</script>
 
 <style lang="less" scoped>
 .ivu-row {

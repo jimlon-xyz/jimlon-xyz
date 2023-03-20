@@ -4,7 +4,6 @@ import { Message } from 'view-ui-plus'
 axios.interceptors.request.use(request => {
     return request
 }, error => {
-    console.log(error)
     Message.error('请求失败，网络请求错误')
 })
 
@@ -17,7 +16,6 @@ axios.interceptors.response.use(({status, data}) => {
         return data
     }
 }, error => {
-    console.log(error)
     Message.error('请求失败，网络响应错误')
 })
 

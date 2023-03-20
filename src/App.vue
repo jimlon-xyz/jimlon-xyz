@@ -26,10 +26,10 @@
                      </div>
                      <div class="user-level">
                         <Row justify="space-between" align="middle">
-                          <div class="label">吉友等级<strong>JY.1</strong></div>
-                          <div class="exp">1 / 15<i class="fa-sharp fa-regular fa-angle-right"></i></div>
+                          <div class="label">吉友等级<strong>JY.{{state.user.user_level}}</strong></div>
+                          <div class="exp">{{state.user.user_exp}} / {{state.user.exp.rt}}<i class="fa-sharp fa-regular fa-angle-right"></i></div>
                         </Row>
-                        <Progress :percent="25" hide-info :stroke-width="6" />
+                        <Progress :percent="state.user.user_exp_percent" hide-info :stroke-width="6" />
                      </div>
                     <!-- <Divider /> -->
                     <Menu width="auto">
@@ -189,12 +189,14 @@ function loginAction() {
     email: state.form.email,
     password: state.form.password,
     remember: state.form.remember,
-  }).then(result => {
-      proxy.$Message.success(result.errMsg)
+  }).then(({errMsg, result}) => {
+      proxy.$Message.success(errMsg)
       state.showLogin = false
       state.form = {}
-      useStore().$state.token = result.result.token
-      useStore().$state.user = result.result.user
+      useStore().$state.token = result.token
+      useStore().$state.user = result.user
+      useStore().$state.user.user_exp_percent = (result.user.user_exp - result.user.exp.lt) / (result.user.exp.rt - result.user.exp.lt) * 100
+      console.log( useStore().$state.user )
   }).catch(null)
 }
 

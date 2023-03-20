@@ -68,6 +68,7 @@ onBeforeMount(() => {
 
     api.userApi.getBaseInfo(route.params.id).then(result => {
         state.user = result.result
+        state.user.home_cover ??= require('@/assets/user-card-bg.jpg')
     })
 
 })

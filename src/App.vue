@@ -180,7 +180,6 @@ function showLogin() {
 
 function logutAction() {
   api.userApi.logout().then(result => {
-
   }).catch(null)
 }
 
@@ -193,10 +192,8 @@ function loginAction() {
       proxy.$Message.success(errMsg)
       state.showLogin = false
       state.form = {}
-      useStore().$state.token = result.token
-      useStore().$state.user = result.user
-      useStore().$state.user.user_exp_percent = (result.user.user_exp - result.user.exp.lt) / (result.user.exp.rt - result.user.exp.lt) * 100
-      console.log( useStore().$state.user )
+      state.token = result.token
+      state.user = Object.assign(result.user, {user_exp_percent: (result.user.user_exp - result.user.exp.lt) / (result.user.exp.rt - result.user.exp.lt) * 100 })
   }).catch(null)
 }
 

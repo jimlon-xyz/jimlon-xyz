@@ -32,14 +32,14 @@
                 <img class="brand-logo" :src="require('@/assets/jimlogo-dark.png')" height="42"/>
                 <Form  v-if="state.formType == 'login'">
                   <FormItem>
-                      <Input size="large" type="text" placeholder="请输入电子邮箱/用户名">
+                      <Input v-model="state.form.email" size="large" type="text" placeholder="请输入电子邮箱">
                         <template #prefix>
                           <i class="fa-light fa-user"></i>
                         </template>
                       </Input>
                   </FormItem>
                   <FormItem>
-                      <Input size="large" type="text" placeholder="请输入登录密码">
+                      <Input v-model="state.form.password" size="large" type="password" placeholder="请输入登录密码">
                         <template #prefix>
                           <i class="fa-light fa-lock-keyhole"></i>
                         </template>
@@ -47,12 +47,12 @@
                   </FormItem>
                   <FormItem>
                       <Row justify="space-between" align="middle">
-                          <Checkbox v-model="single">记住我</Checkbox>
+                          <Checkbox v-model="state.form.remember">记住我</Checkbox>
                           <span class="primary link">忘记密码？</span>
                       </Row>
                   </FormItem>
                   <FormItem>
-                      <Button type="primary" size="large" long @click="loginAction">登 录</Button>
+                      <Button type="primary" size="large" long @click="signInAction">登 录</Button>
                   </FormItem>
                   <FormItem>
                       还没有账号？<span class="primary link" @click="state.formType = 'register'">立即注册</span>
@@ -64,7 +64,7 @@
                 </Form>
                 <Form  v-else>
                   <FormItem>
-                      <Input size="large" type="text" placeholder="请输入电子邮箱">
+                      <Input size="large" v-model="state.regFrom.email" type="text" placeholder="请输入电子邮箱">
                         <template #prefix>
                           <i class="fa-light fa-user"></i>
                         </template>
@@ -73,13 +73,13 @@
                   <FormItem>
                       <Row :gutter="0">
                         <Col :span="24">
-                          <Input size="large" type="text" placeholder="请输入验证码">
+                          <Input size="large" v-model="state.regFrom.code" type="text" placeholder="请输入验证码">
                             <template #prefix>
                               <i class="fa-light fa-shield-check"></i>
                             </template>
                             
                           </Input>
-                          <span class="primary link btn">获取验证码</span>
+                          <span class="primary link btn" @click="getSignUpCode">获取验证码</span>
                         </Col>
                         <!-- <Col :span="8">
                           <Button class="font-size-14" long size="large">获取验证码</Button>
@@ -87,21 +87,21 @@
                       </Row>
                   </FormItem>
                   <FormItem>
-                      <Input size="large" type="text" placeholder="请输入登录密码">
+                      <Input size="large" type="password" v-model="state.regFrom.password" placeholder="请输入登录密码">
                         <template #prefix>
                           <i class="fa-light fa-lock-keyhole"></i>
                         </template>
                       </Input>
                   </FormItem>
                   <FormItem>
-                      <Input size="large" type="text" placeholder="请再次输入登录密码">
+                      <Input size="large" type="password" v-model="state.regFrom.confirm_password" placeholder="请再次输入登录密码">
                         <template #prefix>
                           <i class="fa-light fa-lock-keyhole"></i>
                         </template>
                       </Input>
                   </FormItem>
                   <FormItem>
-                      <Button type="primary" size="large" long>立即注册</Button>
+                      <Button type="primary" size="large" long @click="signUpAction">立即注册</Button>
                   </FormItem>
                   <FormItem>
                       已经有账号？<span class="primary link" @click="state.formType = 'login'">前往登录</span>
@@ -120,6 +120,7 @@
 import { ref, reactive, getCurrentInstance, watch } from "vue"
 import { useRouter, onBeforeRouteUpdate } from "vue-router"
 import useMitt from "./utils/mitt"
+import useAxios from "./utils/axios"
 
 const router = useRouter()
 
@@ -130,17 +131,46 @@ watch(
 
 const state = reactive({
   showLogin: false,
-  formType: 'login'
+  formType: 'login',
+  form: {},
+  regFrom: {}
 })
 
 const { proxy } = getCurrentInstance()
 
 function showLogin() {
   state.showLogin = true
+  
 }
 
-function loginAction() {
-  proxy.$Message.success('登录成功')
+function signInAction() {
+  useAxios.post('/api/user/signIn', {
+    email: state.form.email,
+    password: state.form.password,
+    remember: state.form.remember,
+  }).then(result => {
+      proxy.$Message.success(result.errMsg)
+      state.showLogin = false
+      state.form = {}
+  }).catch(null)
+}
+
+function signUpAction() {
+  useAxios.post('/api/user/signUp', {
+    email: state.regFrom.email,
+    code: state.regFrom.code,
+    password: state.regFrom.password,
+  }).then(result => {
+    console.log(result)
+  })
+}
+
+function getSignUpCode() {
+  useAxios.post('/api/user/getSignUpCode', {
+    email: state.regFrom.email,
+  }).then(result => {
+    console.log(result)
+  })
 }
 </script>
 

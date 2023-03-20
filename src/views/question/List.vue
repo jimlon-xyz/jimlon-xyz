@@ -9,7 +9,7 @@
                                 <ListItem v-for="k of 10" :key="`k-${k}`">
                                     <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" :size="48" />
                                     <div class="topic-content">
-                                        <div class="topic-title"><Tag v-if="k - 1 === 0" size="small" color="primary">置顶</Tag><router-link :to='{name:"questionDetail", params: {id: 1}}'>这是一个标题</router-link></div>
+                                        <div class="topic-title"><Tag v-if="k - 1 === 0" class="ivu-tag-size-small" color="primary">置顶</Tag><router-link :to='{name:"questionDetail", params: {id: 1}}'>这是一个标题</router-link></div>
                                         <div class="topic-meta">
                                             <div class="ltr">
                                                 <span>问答</span>

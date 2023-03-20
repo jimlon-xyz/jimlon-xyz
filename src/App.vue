@@ -163,7 +163,14 @@ const state = reactive({
   formType: 'login',
   form: {},
   regFrom: {},
-  user: computed(() => useStore().$state.user)
+  user: computed({
+    get() {
+      return useStore().$state.user
+    },
+    set(value) {
+      useStore().$state.user = value
+    }
+  })
 })
 
 const { proxy } = getCurrentInstance()
@@ -178,7 +185,7 @@ function showLogin() {
   state.showLogin = true
 }
 
-function logutAction() {
+function logoutAction() {
   api.userApi.logout().then(result => {
   }).catch(null)
 }

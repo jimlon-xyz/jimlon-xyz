@@ -13,6 +13,7 @@
           </Menu>
           <div class="right-side">
             <template v-if="state.user">
+              <span class="btn"><i class="fa-solid fa-bell"></i></span>
               <Poptip placement="bottom-end" :width="280">
                 <template #content>
                   <div class="user-card">
@@ -86,7 +87,7 @@
                       </Row>
                   </FormItem>
                   <FormItem>
-                      <Button type="primary" size="large" long @click="signInAction">登 录</Button>
+                      <Button type="primary" size="large" long @click="loginAction">登 录</Button>
                   </FormItem>
                   <FormItem>
                       还没有账号？<span class="primary link" @click="state.formType = 'register'">立即注册</span>
@@ -113,7 +114,7 @@
                             </template>
                             
                           </Input>
-                          <span class="primary link btn" @click="getSignUpCode">获取验证码</span>
+                          <span class="primary link btn" @click="getRegisterCode">获取验证码</span>
                         </Col>
                         <!-- <Col :span="8">
                           <Button class="font-size-14" long size="large">获取验证码</Button>
@@ -135,7 +136,7 @@
                       </Input>
                   </FormItem>
                   <FormItem>
-                      <Button type="primary" size="large" long @click="signUpAction">立即注册</Button>
+                      <Button type="primary" size="large" long @click="registerAction">立即注册</Button>
                   </FormItem>
                   <FormItem>
                       已经有账号？<span class="primary link" @click="state.formType = 'login'">前往登录</span>
@@ -466,10 +467,27 @@ a:hover {
     }
 
   }
+
+  .btn {
+    font-size: 18px;
+    color: #8a919f;
+    padding: 0;
+  }
+
+  .ivu-poptip {
+    display: block;
+  }
+
+  .ivu-poptip-rel {
+    display: flex;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
 }
 
 .header section .right-side .ivu-btn {
-  margin-left: 16px;
+  margin-left: 20px;
 }
 
 .content {

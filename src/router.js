@@ -19,7 +19,7 @@ const routes = [
     },
     {
         path: '/user/center/sign',
-        name: 'userHome',
+        name: 'userSign',
         component: () => import(/* webpackChunkName: "user-home" */ '@/views/user/Home.vue')
     },
     {

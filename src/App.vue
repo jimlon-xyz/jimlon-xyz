@@ -32,10 +32,10 @@
                      </div>
                     <!-- <Divider /> -->
                     <Menu width="auto">
-                      <MenuItem name="1">我的主页</MenuItem>
-                      <MenuItem name="2">个人资料</MenuItem>
-                      <MenuItem name="3">钱包账户</MenuItem>
-                      <MenuItem name="4">账号设置</MenuItem>
+                      <MenuItem name="1" :to="{name:'userHome',params:{id: state.user.id}}">我的主页</MenuItem>
+                      <MenuItem name="2" :to="{name:'userSettingProfile'}">个人资料</MenuItem>
+                      <MenuItem name="3" :to="{name:'userSettingWallet'}">钱包账户</MenuItem>
+                      <MenuItem name="4" :to="{name:'userSettingAccount'}">账号设置</MenuItem>
                       <Divider />
                       <MenuItem name="5">退出</MenuItem>
                     </Menu>

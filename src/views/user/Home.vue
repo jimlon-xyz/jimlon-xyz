@@ -1,13 +1,13 @@
 <template>
     <Row :gutter="20">
         <Col :span="17">
-            <div class="user-home-cover" :style="{'--height': '180px', '--bgCover': `url(${state.user?.home_cover})`}"></div>
+            <div class="user-home-cover" :style="{'--height': '180px', '--bgCover': `url(${state.user?.home_cover || require('@/assets/user-card-bg.jpg')})`}"></div>
             <div class="user-meta">
                     <div class="meta-wrapper">
-                        <img class="user-avatar" :src="state.user?.avatar" />
+                        <img class="user-avatar" :src="state.user?.avatar || require('@/assets/demo-avatar.jpg')" />
                         <div class="user-box">
                             <div class="top-line">
-                                <span class="name">{{state.user?.user_name || '{name}'}}</span>
+                                <span class="name">{{state.user?.user_name || '名称'}}</span>
                                 <Tag class="primary-plain">管理员</Tag>
                             </div>
                             <div class="second-line">{{state.user?.home_description || '没有描述'}}</div>

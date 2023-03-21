@@ -1,6 +1,6 @@
 <template>
     <Row :gutter="20">
-        <Col :span="17">
+        <Col flex="1">
             <div class="user-home-cover" :style="{'--height': '180px', '--bgCover': `url(${state.user?.home_cover || require('@/assets/user-card-bg.jpg')})`}"></div>
             <div class="user-meta">
                     <div class="meta-wrapper">
@@ -43,7 +43,7 @@
                 </Tabs>
             </div>
         </Col>
-        <Col :span="7">
+        <Col flex="320px">
             <div class="block">
                 <h3 class="title">热评帖子</h3>
             </div>

@@ -8,6 +8,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "question-list" */ '@/views/question/List.vue')
     },
     {
+        path: '/feed',
+        name: 'feed',
+        component: () => import(/* webpackChunkName: "feed-home" */ '@/views/feed/Index.vue')
+    },
+    {
         path: '/question/:id',
         name: 'questionDetail',
         component: () => import(/* webpackChunkName: "question-detail" */ '@/views/question/Detail.vue')

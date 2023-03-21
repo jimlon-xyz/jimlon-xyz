@@ -1,6 +1,6 @@
 <template>
     <Row :gutter="20" class="section-wrapper">
-        <Col :span="17">
+        <Col flex="1">
             <div class="section">
                 <Tabs value="name1" :animated="false" :bar-gutter="20">
                     <TabPane label="全部" name="name1">
@@ -37,7 +37,7 @@
                 </Row>
             </div>
         </Col>
-        <Col :span="7">
+        <Col flex="320px">
             <div class="block bg-none"><Button size="large" type="primary" long icon="md-create">我要提问</Button></div>
             <div class="block">
                 <h3 class="title">热评帖子</h3>

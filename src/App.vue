@@ -5,11 +5,13 @@
           <router-link to="/">
             <img class="brand-logo" src="@/assets/jimlogo-dark.png" height="42" />
           </router-link>
-          <Menu mode="horizontal">
-            <MenuItem name="1" to="/">首页</MenuItem>
+          <Menu mode="horizontal" :active-name="$route.path">
+            <MenuItem name="/" to="/">首页</MenuItem>
+            <MenuItem name="/feed" to="/feed">畅言</MenuItem>
+            <MenuItem name="3">文章</MenuItem>
             <MenuItem name="2">课程</MenuItem>
-            <MenuItem name="3">直播</MenuItem>
-            <MenuItem name="4">其他</MenuItem>
+            <MenuItem name="3">众包</MenuItem>
+            <!-- <MenuItem name="4"><Badge text="邀请有礼" :offset="[15, -30]">APP</Badge></MenuItem> -->
           </Menu>
           <div class="right-side">
             <template v-if="state.user">
@@ -170,7 +172,8 @@ const state = reactive({
     set(value) {
       useStore().$state.user = value
     }
-  })
+  }),
+  showPop: false
 })
 
 const { proxy } = getCurrentInstance()
@@ -186,8 +189,9 @@ function showLogin() {
 }
 
 function logoutAction() {
-  api.userApi.logout().then(result => {
-  }).catch(null)
+  state.user = null
+  proxy.$Message.success('退出登录')
+  api.userApi.logout()
 }
 
 function loginAction() {
@@ -228,6 +232,10 @@ html, body, #app {
   margin: 0;
   padding: 0;
   height: 100%;
+}
+
+.ivu-message-notice-content {
+  background: 0 1px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
 ::-webkit-scrollbar {
@@ -364,6 +372,16 @@ a:hover {
   border: 0;
 }
 
+
+.header section .ivu-badge-count {
+    transform: scale(0.5);
+    transform-origin: right center;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 2px 6px;
+    height: auto;
+    background: rgb(238 80 47 / 80%);
+}
 
 .user-card {
 

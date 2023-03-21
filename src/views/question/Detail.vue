@@ -1,6 +1,6 @@
 <template>
-        <Row :gutter="20">
-        <Col :span="17">
+    <Row :gutter="20">
+        <Col flex="1">
             <div class="section">
                 <div class="question-header">
                     <div class="question-title"><Tag color="primary">置顶</Tag><h1>售后问题请通过官网渠道，演示站不作为售后渠道</h1></div>
@@ -78,7 +78,7 @@
                 </div>
             </div>
         </Col>
-        <Col :span="7">
+        <Col flex="320px">
             <div class="block bg-none"><Button size="large" type="primary" long icon="md-create">我要提问</Button></div>
             <div class="block">
                 <h3 class="title">热评帖子</h3>

@@ -149,6 +149,7 @@ const state = reactive({
         
         &.editor-active-focus {
             border: solid 1px @primary-color;
+            background: #fff;
         }
 
         .editor-count-label {

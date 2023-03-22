@@ -23,9 +23,9 @@ const routes = [
         component: () => import(/* webpackChunkName: "user-home" */ '@/views/user/Home.vue')
     },
     {
-        path: '/user/center/sign',
-        name: 'userSign',
-        component: () => import(/* webpackChunkName: "user-home" */ '@/views/user/Home.vue')
+        path: '/project',
+        name: 'projectHome',
+        component: () => import(/* webpackChunkName: "user-home" */ '@/views/project/Index.vue')
     },
     {
         path: '/user/setting',

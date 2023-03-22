@@ -8,9 +8,9 @@
           <Menu mode="horizontal" :active-name="$route.path">
             <MenuItem name="/" to="/">首页</MenuItem>
             <MenuItem name="/feed" to="/feed">畅言</MenuItem>
-            <MenuItem name="3">文章</MenuItem>
-            <MenuItem name="2">课程</MenuItem>
-            <MenuItem name="3">众包</MenuItem>
+            <MenuItem name="/news" to="/news">文章</MenuItem>
+            <MenuItem name="/lesson" to="/lesson">课程</MenuItem>
+            <MenuItem name="/project" to="/project">众包</MenuItem>
             <!-- <MenuItem name="4"><Badge text="邀请有礼" :offset="[15, -30]">APP</Badge></MenuItem> -->
           </Menu>
           <div class="right-side">

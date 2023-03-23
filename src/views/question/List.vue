@@ -195,7 +195,7 @@
 
             &:hover {
                 color: #fff !important;
-                background: fade(@primary-color, 75%);
+                background: fade(@primary-color, 85%);
             }
         }
 

@@ -3,7 +3,7 @@
         <Col flex="1">
             <div class="section">
                 <div class="question-header">
-                    <div class="question-title"><Tag color="primary">置顶</Tag><h1>售后问题请通过官网渠道，演示站不作为售后渠道</h1></div>
+                    <div class="question-title"><Tag color="error">置顶</Tag><h1>售后问题请通过官网渠道，演示站不作为售后渠道</h1></div>
                     <div class="question-meta">
                         <Poptip placement="bottom-start" :width="360" trigger="hover">
                             <span>Jimlon</span>

@@ -79,7 +79,7 @@
         }
 
         .radio-group {
-            
+
             > span {
                 cursor: pointer;
                 margin-right: 10px;

@@ -1,80 +1,82 @@
 <template>
-    <Row :gutter="20" class="section-wrapper">
-        <Col flex="1">
-            <div class="section">
-                <Tabs value="name1" :animated="false" :bar-gutter="20">
-                    <TabPane label="全部" name="name1">
-                        <div class="section-p-20">
-                            <List>
-                                <ListItem v-for="k of 10" :key="`k-${k}`">
-                                    <div class="topic-ltr">
-                                        <div class="anwser-state no-answer" v-if="k == 1 || k > 3">
-                                            <div class="value">0</div>
-                                            <div class="label">回答</div>
-                                        </div>
-                                        <div class="anwser-state resolved" v-else-if="k == 2">
-                                            <div class="value">1</div>
-                                            <div class="label">解决</div>
-                                        </div>
-                                        <div class="anwser-state answered" v-else-if="k == 3">
-                                            <div class="value">1</div>
-                                            <div class="label">回答</div>
-                                        </div>
-                                        <div class="topic-viewer">
-                                            <div class="value">{{Math.floor(Math.random() * 9999)}}</div>
-                                            <div class="label">浏览</div>
-                                        </div>
-                                    </div>
-                                    <div class="topic-content">
-                                        <div class="topic-title">
-                                            <Tooltip max-width="200" content="如果回答被采纳，回答者将获得10个吉米" placement="top-start">
-                                                <div class="topic-reward">
-                                                    <img :src="require('@/assets/coins.png')" height="16"/>
-                                                    <span>{{Math.floor(Math.random() * 50)}}</span>
-                                                </div>
-                                            </Tooltip>
-                                            <Tag v-if="k - 1 === 0" class="ivu-tag-size-small" color="error">置顶</Tag>
-                                            <router-link class="the-title" :to='{name:"questionDetail", params: {id: 1}}'>这是一个标题</router-link>
-                                            <router-link to="/tag/USDT" class="jm-tag">USDT</router-link>
-                                            <router-link to="/tag/bep-20" class="jm-tag">BEP-20</router-link>
-                                        </div>
-                                        <div class="topic-meta">
-                                            <div class="ltr">
-                                                <span>问答</span>
-                                                <Divider type="vertical" />
-                                                <span>星雨</span>
-                                                <Divider type="vertical" />
-                                                <span>10分钟前</span>
+    <main>
+        <Row :gutter="20" class="section-wrapper">
+            <Col flex="1">
+                <div class="section">
+                    <Tabs value="name1" :animated="false" :bar-gutter="20">
+                        <TabPane label="最新" name="name1">
+                            <div class="section-p-20">
+                                <List>
+                                    <ListItem v-for="k of 10" :key="`k-${k}`">
+                                        <div class="topic-ltr">
+                                            <div class="anwser-state resolved" v-if="k == 2">
+                                                <div class="value">1</div>
+                                                <div class="label">解决</div>
                                             </div>
-                                            <!-- <div class="reply-count">
-                                                <span><i class="fa-sharp fa-regular fa-eye"></i>15698</span>
-                                                <span><i class="fa-regular fa-comment-dots"></i>36</span>
-                                            </div> -->
+                                            <div class="anwser-state" v-else :class="[
+                                                k == 1 || k == 3 ? 'no-answer' : null, 
+                                                k > 3 ? 'answered' : null
+                                                ]">
+                                                <div class="value">0</div>
+                                                <div class="label">回答</div>
+                                            </div>
+                                            <div class="topic-viewer">
+                                                <div class="value">{{Math.floor(Math.random() * 9999)}}</div>
+                                                <div class="label">浏览</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </ListItem>
-                            </List>
-                        </div>   
-                    </TabPane>
-                    <TabPane label="回答" name="name2">标签二的内容</TabPane>
-                    <TabPane label="建议" name="name3">标签三的内容</TabPane>
-                    <TabPane label="其他" name="name4">标签三的内容</TabPane>
-                </Tabs>
-                <Row justify="center" class="page-wrapper">
-                    <Page :total="100" />
-                </Row>
-            </div>
-        </Col>
-        <Col flex="320px">
-            <div class="block bg-none"><Button size="large" type="primary" long icon="md-create">我要提问</Button></div>
-            <div class="block">
-                <h3 class="title">热评帖子</h3>
-            </div>
-            <div class="block">
-                <h3 class="title">随便看看</h3>
-            </div>
-        </Col>
-    </Row>
+                                        <div class="topic-content">
+                                            <div class="topic-title">
+                                                <Tooltip max-width="200" content="如果回答被采纳，回答者将获得10个吉米" placement="top-start">
+                                                    <div class="topic-reward">
+                                                        <img :src="require('@/assets/coins.png')" height="16"/>
+                                                        <span>{{Math.floor(Math.random() * 50)}}</span>
+                                                    </div>
+                                                </Tooltip>
+                                                <Tag v-if="k - 1 === 0" class="ivu-tag-size-small" color="error">置顶</Tag>
+                                                <router-link class="the-title" :to='{name:"questionDetail", params: {id: 1}}'>这是一个标题</router-link>
+                                                <router-link to="/tag/USDT" class="jm-tag">USDT</router-link>
+                                                <router-link to="/tag/bep-20" class="jm-tag">BEP-20</router-link>
+                                            </div>
+                                            <div class="topic-meta">
+                                                <div class="ltr">
+                                                    <span>问答</span>
+                                                    <Divider type="vertical" />
+                                                    <span>星雨</span>
+                                                    <Divider type="vertical" />
+                                                    <span>10分钟前</span>
+                                                </div>
+                                                <!-- <div class="reply-count">
+                                                    <span><i class="fa-sharp fa-regular fa-eye"></i>15698</span>
+                                                    <span><i class="fa-regular fa-comment-dots"></i>36</span>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </ListItem>
+                                </List>
+                            </div>   
+                        </TabPane>
+                        <TabPane label="热门" name="name2">标签二的内容</TabPane>
+                        <TabPane label="未回答" name="name4">标签三的内容</TabPane>
+                        <TabPane label="未解决" name="name3">标签三的内容</TabPane>
+                        <TabPane label="已解决" name="name4">标签三的内容</TabPane>
+                    </Tabs>
+                    <Row justify="center" class="page-wrapper">
+                        <Page :total="100" />
+                    </Row>
+                </div>
+            </Col>
+            <Col flex="320px">
+                <div class="block bg-none"><Button size="large" type="primary" long icon="md-create">我要提问</Button></div>
+                <div class="block">
+                    <h3 class="title">热评帖子</h3>
+                </div>
+                <div class="block">
+                    <h3 class="title">随便看看</h3>
+                </div>
+            </Col>
+        </Row>
+    </main>
 </template>
 
 <script setup>

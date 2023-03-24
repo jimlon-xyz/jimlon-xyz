@@ -55,9 +55,7 @@
         </section>
       </Header>
       <Content id="content" class="content">
-        <main>
-          <router-view/>
-        </main>
+        <router-view/>
       </Content>
 
       <Modal

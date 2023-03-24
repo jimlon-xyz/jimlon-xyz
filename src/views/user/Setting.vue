@@ -1,5 +1,6 @@
 <template>
-    <Row :gutter="20">
+    <main>
+        <Row :gutter="20">
         <Col flex="240px">
             <aside>
                 <Menu :active-name="$route.name" width="auto">
@@ -23,11 +24,10 @@
             </aside>
         </Col>
         <Col flex="auto">
-            <main>
-                <router-view/>
-            </main>
+            <router-view/>
         </Col>
-    </Row>    
+        </Row>   
+    </main> 
 </template>
 
 <script setup></script>
@@ -60,7 +60,7 @@ aside {
     }
 }
 
-main {
+.section {
     background: #fff;
 }
 </style>

@@ -1,93 +1,105 @@
 <template>
-    <Row :gutter="20">
-        <Col flex="1">
-            <div class="section">
-                <div class="question-header">
-                    <div class="question-title"><Tag color="error">置顶</Tag><h1>售后问题请通过官网渠道，演示站不作为售后渠道</h1></div>
-                    <div class="question-meta">
-                        <Poptip placement="bottom-start" :width="360" trigger="hover">
-                            <span>Jimlon</span>
-                            <template #content>
-                                <div class="user-card" :style="{'--bgCover': `url(${require('@/assets/user-card-bg.jpg')})`}">
-                                    <img class="user-avatar" src="@/assets/demo-avatar.jpg" />
-                                    <div class="user-name"><router-link class="name" :to="{name: 'userHome', params: {id: 1}}">Jimlon</router-link><Tag class="primary-plain">管理员</Tag></div>
-                                    <div class="split-divide">
-                                        <Divider />
-                                    </div>
-                                    <div class="user-stats">
-                                        <Row>
-                                            <Col :span="6">
-                                                <span class="value">1356</span>
-                                                <span class="label">文章</span>
-                                            </Col>
-                                            <Col :span="6">
-                                                <span class="value">13</span>
-                                                <span class="label">问答</span>
-                                            </Col>
-                                            <Col :span="6">
-                                                <span class="value">27</span>
-                                                <span class="label">评论</span>
-                                            </Col>
-                                            <Col :span="6">
-                                                <span class="value">25</span>
-                                                <span class="label">粉丝</span>
-                                            </Col>
-                                        </Row>
-                                    </div>
-                                    <div class="user-action">
-                                        <Row justify="center" align="middle">
-                                            <Button type="primary" icon="md-add">关注他</Button>
-                                            <Button icon="md-mail">发私信</Button>
-                                        </Row>
-                                    </div>
-                                </div>
-                            </template>
-                        </Poptip>
-                        <span><i class="fa-regular fa-calendar-days"></i>三天前</span>
-                        <span><i class="fa-regular fa-folder-open"></i>其他</span>
-                        <span><i class="fa-sharp fa-regular fa-eye"></i>1552</span>
-                    </div>
-                    <div class="question-body">如题，主题演示站仅作功能和效果的展示，主要由我们团队技术人员负责运维管理，所以不作为售前及售后服务渠道。
-如对我们的产品、服务有任何问题欢迎通过我们的官网渠道提交服务单或者联系我们官网右侧的在线客服。</div>
-                </div>
-                <div class="question-reply">
-                    <div class="question-as-title">
-                        <div class="ltr">
-                            <h3>回复</h3>
-                            <Divider type="vertical" class="v-divider" />
-                            <span class="reply-count">共56条回复</span>
+    <Space direction="vertical" type="flex" :size="20">
+        <div class="question-header--wrapper">
+            <section>
+                <Row :gutter="20">
+                    <Col flex="1">asdfasdf</Col>
+                    <Col flex="320px">asdfasdf</Col>
+                </Row>
+            </section>
+        </div>
+        <section>
+            <Row :gutter="20">
+                <Col flex="1">
+                    <div class="section">
+                        <div class="question-header">
+                            <div class="question-title"><Tag color="error">置顶</Tag><h1>售后问题请通过官网渠道，演示站不作为售后渠道</h1></div>
+                            <div class="question-meta">
+                                <Poptip placement="bottom-start" :width="360" trigger="hover">
+                                    <span>Jimlon</span>
+                                    <template #content>
+                                        <div class="user-card" :style="{'--bgCover': `url(${require('@/assets/user-card-bg.jpg')})`}">
+                                            <img class="user-avatar" src="@/assets/demo-avatar.jpg" />
+                                            <div class="user-name"><router-link class="name" :to="{name: 'userHome', params: {id: 1}}">Jimlon</router-link><Tag class="primary-plain">管理员</Tag></div>
+                                            <div class="split-divide">
+                                                <Divider />
+                                            </div>
+                                            <div class="user-stats">
+                                                <Row>
+                                                    <Col :span="6">
+                                                        <span class="value">1356</span>
+                                                        <span class="label">文章</span>
+                                                    </Col>
+                                                    <Col :span="6">
+                                                        <span class="value">13</span>
+                                                        <span class="label">问答</span>
+                                                    </Col>
+                                                    <Col :span="6">
+                                                        <span class="value">27</span>
+                                                        <span class="label">评论</span>
+                                                    </Col>
+                                                    <Col :span="6">
+                                                        <span class="value">25</span>
+                                                        <span class="label">粉丝</span>
+                                                    </Col>
+                                                </Row>
+                                            </div>
+                                            <div class="user-action">
+                                                <Row justify="center" align="middle">
+                                                    <Button type="primary" icon="md-add">关注他</Button>
+                                                    <Button icon="md-mail">发私信</Button>
+                                                </Row>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </Poptip>
+                                <span><i class="fa-regular fa-calendar-days"></i>三天前</span>
+                                <span><i class="fa-regular fa-folder-open"></i>其他</span>
+                                <span><i class="fa-sharp fa-regular fa-eye"></i>1552</span>
+                            </div>
+                            <div class="question-body">如题，主题演示站仅作功能和效果的展示，主要由我们团队技术人员负责运维管理，所以不作为售前及售后服务渠道。
+        如对我们的产品、服务有任何问题欢迎通过我们的官网渠道提交服务单或者联系我们官网右侧的在线客服。</div>
                         </div>
-                        <Button type="primary"><i class="fa-sharp fa-solid fa-feather-pointed"></i>我来回复</Button>
+                        <div class="question-reply">
+                            <div class="question-as-title">
+                                <div class="ltr">
+                                    <h3>回复</h3>
+                                    <Divider type="vertical" class="v-divider" />
+                                    <span class="reply-count">共56条回复</span>
+                                </div>
+                                <Button type="primary"><i class="fa-sharp fa-solid fa-feather-pointed"></i>我来回复</Button>
+                            </div>
+                            <div class="empty-holder">
+                                <img src="@/assets/empty-placeholder.png"/>
+                                <span>暂无回复内容</span>
+                            </div>
+                            <Divider />
+                            <div class="editor-wrapper">
+                                <Editor 
+                                    :locale="zhHans"
+                                    :value="state.form.value" 
+                                    :plugins="state.plugins"
+                                    @change="value => state.form.value = value"/>
+                                <Row justify="space-between" align="middle">
+                                    <Checkbox v-model="state.form.follow">关注问题</Checkbox>
+                                    <Button type="primary">提交</Button>
+                                </Row>
+                            </div>
+                        </div>
                     </div>
-                    <div class="empty-holder">
-                        <img src="@/assets/empty-placeholder.png"/>
-                        <span>暂无回复内容</span>
+                </Col>
+                <Col flex="320px">
+                    <div class="block bg-none"><Button size="large" type="primary" long icon="md-create">我要提问</Button></div>
+                    <div class="block">
+                        <h3 class="title">热评帖子</h3>
                     </div>
-                    <Divider />
-                    <div class="editor-wrapper">
-                        <Editor 
-                            :locale="zhHans"
-                            :value="state.form.value" 
-                            :plugins="state.plugins"
-                            @change="value => state.form.value = value"/>
-                        <Row justify="space-between" align="middle">
-                            <Checkbox v-model="state.form.follow">关注问题</Checkbox>
-                            <Button type="primary">提交</Button>
-                        </Row>
+                    <div class="block">
+                        <h3 class="title">随便看看</h3>
                     </div>
-                </div>
-            </div>
-        </Col>
-        <Col flex="320px">
-            <div class="block bg-none"><Button size="large" type="primary" long icon="md-create">我要提问</Button></div>
-            <div class="block">
-                <h3 class="title">热评帖子</h3>
-            </div>
-            <div class="block">
-                <h3 class="title">随便看看</h3>
-            </div>
-        </Col>
-    </Row>
+                </Col>
+            </Row>
+        </section>
+    </Space>
 </template>
 
 <script setup>
@@ -113,6 +125,16 @@ const state = reactive({
 </script>
 
 <style lang="less" scoped>
+.question-header--wrapper {
+    background: #fff;
+    padding: 20px 0;
+}
+
+.ivu-space .ivu-space-item section {
+    width: 1200px;
+    margin: 0 auto;
+}
+
 .section > div {
     background: #fff;
     margin-bottom: 20px;

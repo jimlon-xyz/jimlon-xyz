@@ -189,9 +189,9 @@
 
         .jm-tag {
             color: @primary-color !important;
-            background: fade(@primary-color, 10%);
+            background: fade(@primary-color, 12%);
             font-size: 14px;
-            padding: 0 8px;
+            padding: 1px 8px;
             transition: none !important;
             margin-right: 6px;
 

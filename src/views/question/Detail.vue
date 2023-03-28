@@ -4,7 +4,10 @@
             <section>
                 <Row :gutter="20">
                     <Col flex="1">
-                        <div class="tags-list"></div>
+                        <div class="tags-list">
+                            <router-link to="/tag/USDT" class="jm-tag">USDT</router-link>
+                            <router-link to="/tag/bep-20" class="jm-tag">BEP-20</router-link>
+                        </div>
                         <div class="title-area">
                             <div class="topic-reward">
                                 <img :src="require('@/assets/coins.png')" height="20"/>
@@ -12,7 +15,7 @@
                             </div>
                             <h1>这是标题</h1>
                         </div>
-                        <div class="body">ddddd</div>
+                        <div class="body">我这个是一串问题描述</div>
                         <div class="date">发布于 2022-09-21 21:58:09</div>
                         <div class="bottom-area">
                             <Space :size="20">
@@ -121,11 +124,32 @@ const state = reactive({
     background: #fff;
     padding: 20px 0;
 
+
+    .tags-list {
+        margin-bottom: 20px;
+
+        .jm-tag {
+            color: @primary-color !important;
+            background: fade(@primary-color, 12%);
+            font-size: 14px;
+            padding: 5px 8px;
+            transition: none !important;
+            margin-right: 8px;
+            line-height: 1;
+
+            &:hover {
+                color: #fff !important;
+                background: fade(@primary-color, 85%);
+            }
+        }
+
+    }
+
     .title-area {
         display: flex;
         line-height: 1;
         align-items: flex-start;
-        margin: 0 0 6px;
+        margin: 0 0 15px;
 
         .topic-reward {
             display: inline-flex;

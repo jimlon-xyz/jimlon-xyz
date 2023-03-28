@@ -3,8 +3,44 @@
         <div class="question-header--wrapper">
             <section>
                 <Row :gutter="20">
-                    <Col flex="1">asdfasdf</Col>
-                    <Col flex="320px">asdfasdf</Col>
+                    <Col flex="1">
+                        <div class="tags-list"></div>
+                        <div class="title-area">
+                            <div class="topic-reward">
+                                <img :src="require('@/assets/coins.png')" height="20"/>
+                                <span>{{Math.floor(Math.random() * 50)}}</span>
+                            </div>
+                            <h1>这是标题</h1>
+                        </div>
+                        <div class="body">ddddd</div>
+                        <div class="date">发布于 2022-09-21 21:58:09</div>
+                        <div class="bottom-area">
+                            <Space :size="20">
+                                <Space :size="8">
+                                    <Button type="primary">关注问题</Button>
+                                    <Button type="primary" ghost><i class="fa-solid fa-pen"></i>我来回答</Button>
+                                </Space>
+                                <Space :size="20">
+                                    <span class="btn"><i class="fa-solid fa-share-from-square"></i>分享</span>
+                                    <span class="btn"><i class="fa-regular fa-bookmark"></i>收藏</span>
+                                    <span class="btn"><i class="fa-solid fa-triangle-exclamation"></i>举报</span>
+                                </Space>
+                            </Space>
+                        </div>
+                    </Col>
+                    <Col flex="320px">
+                        <Row class="header-meta">
+                            <Col>
+                                <div class="label">关注者</div>
+                                <div class="value">35</div>
+                            </Col>
+                            <Col><div class="divider-vertical"></div></Col>
+                            <Col>
+                                <div class="label">被浏览</div>
+                                <div class="value">143,587</div>
+                            </Col>
+                        </Row>
+                    </Col>
                 </Row>
             </section>
         </div>
@@ -12,54 +48,6 @@
             <Row :gutter="20">
                 <Col flex="1">
                     <div class="section">
-                        <div class="question-header">
-                            <div class="question-title"><Tag color="error">置顶</Tag><h1>售后问题请通过官网渠道，演示站不作为售后渠道</h1></div>
-                            <div class="question-meta">
-                                <Poptip placement="bottom-start" :width="360" trigger="hover">
-                                    <span>Jimlon</span>
-                                    <template #content>
-                                        <div class="user-card" :style="{'--bgCover': `url(${require('@/assets/user-card-bg.jpg')})`}">
-                                            <img class="user-avatar" src="@/assets/demo-avatar.jpg" />
-                                            <div class="user-name"><router-link class="name" :to="{name: 'userHome', params: {id: 1}}">Jimlon</router-link><Tag class="primary-plain">管理员</Tag></div>
-                                            <div class="split-divide">
-                                                <Divider />
-                                            </div>
-                                            <div class="user-stats">
-                                                <Row>
-                                                    <Col :span="6">
-                                                        <span class="value">1356</span>
-                                                        <span class="label">文章</span>
-                                                    </Col>
-                                                    <Col :span="6">
-                                                        <span class="value">13</span>
-                                                        <span class="label">问答</span>
-                                                    </Col>
-                                                    <Col :span="6">
-                                                        <span class="value">27</span>
-                                                        <span class="label">评论</span>
-                                                    </Col>
-                                                    <Col :span="6">
-                                                        <span class="value">25</span>
-                                                        <span class="label">粉丝</span>
-                                                    </Col>
-                                                </Row>
-                                            </div>
-                                            <div class="user-action">
-                                                <Row justify="center" align="middle">
-                                                    <Button type="primary" icon="md-add">关注他</Button>
-                                                    <Button icon="md-mail">发私信</Button>
-                                                </Row>
-                                            </div>
-                                        </div>
-                                    </template>
-                                </Poptip>
-                                <span><i class="fa-regular fa-calendar-days"></i>三天前</span>
-                                <span><i class="fa-regular fa-folder-open"></i>其他</span>
-                                <span><i class="fa-sharp fa-regular fa-eye"></i>1552</span>
-                            </div>
-                            <div class="question-body">如题，主题演示站仅作功能和效果的展示，主要由我们团队技术人员负责运维管理，所以不作为售前及售后服务渠道。
-        如对我们的产品、服务有任何问题欢迎通过我们的官网渠道提交服务单或者联系我们官网右侧的在线客服。</div>
-                        </div>
                         <div class="question-reply">
                             <div class="question-as-title">
                                 <div class="ltr">
@@ -67,13 +55,16 @@
                                     <Divider type="vertical" class="v-divider" />
                                     <span class="reply-count">共56条回复</span>
                                 </div>
-                                <Button type="primary"><i class="fa-sharp fa-solid fa-feather-pointed"></i>我来回复</Button>
+                                <span class="btn sort-btn">默认排序<i class="fa-sharp fa-solid fa-chevron-down"></i></span>
                             </div>
                             <div class="empty-holder">
                                 <img src="@/assets/empty-placeholder.png"/>
                                 <span>暂无回复内容</span>
                             </div>
-                            <Divider />
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="question-reply">
                             <div class="editor-wrapper">
                                 <Editor 
                                     :locale="zhHans"
@@ -125,9 +116,89 @@ const state = reactive({
 </script>
 
 <style lang="less" scoped>
+//写一个白色样式
 .question-header--wrapper {
     background: #fff;
     padding: 20px 0;
+
+    .title-area {
+        display: flex;
+        line-height: 1;
+        align-items: flex-start;
+        margin: 0 0 6px;
+
+        .topic-reward {
+            display: inline-flex;
+            color: @warning-color;
+            margin-right: 8px;
+            font-size: 18px;
+            align-items: center;
+
+            > img {
+                margin-right: 3px;
+            }
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 600;
+            display: block;
+        }
+
+    }
+
+    
+
+    .body {
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    .date {
+        margin-top: 10px;
+        color: #777;
+        font-size: 14px;
+    }
+
+    .bottom-area {
+        margin-top: 20px;
+
+        span.btn {
+            color: #8590a6;
+            font-size: 13px;
+            
+            i[class^="fa-"] {
+                margin-right: 4px;
+            }
+
+            &.active {
+                color: @primary-color;
+            }
+        }
+    }
+
+    .header-meta {
+
+        .label {
+            color: #8590a6;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .value {
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .divider-vertical {
+            width: 1px;
+            margin: 0 20px;
+            height: 100%;
+            background: #ebebeb;
+        }
+    }
+
 }
 
 .ivu-space .ivu-space-item section {
@@ -282,6 +353,15 @@ const state = reactive({
         border-bottom: solid 1px @border-color-third;
         display: flex;
         justify-content: space-between;
+
+
+        .sort-btn {
+            color: #555;
+
+            i[class^="fa-"] {
+                margin-left: 4px;
+            }
+        }
 
         h3 {
             font-size: 18px;

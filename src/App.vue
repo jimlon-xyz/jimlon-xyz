@@ -14,43 +14,51 @@
             <!-- <MenuItem name="4"><Badge text="邀请有礼" :offset="[15, -30]">APP</Badge></MenuItem> -->
           </Menu>
           <div class="right-side">
-            <template v-if="state.user">
-              <span class="btn"><i class="fa-solid fa-bell"></i></span>
-              <Poptip placement="bottom-end" :width="280">
-                <template #content>
-                  <div class="user-card">
-                     <div class="user-card-row">
-                        <Avatar class="avatar" :src="state.user.avatar" :size="48" />
-                      <div class="user-detail">
-                        <div class="name">{{state.user.user_name}}</div>
-                        <div class="summary">金币：100<i class="fa-sharp fa-regular fa-angle-right"></i></div>
+            <Space :size="20">
+                <Input placeholder="搜索问题、文章" class="ivu-input-round" style="width: 320px;">
+                  <template #suffix>
+                      <Icon type="ios-search" />
+                  </template>
+              </Input>
+
+              <template v-if="state.user">
+                <span class="btn"><i class="fa-solid fa-bell"></i></span>
+                <Poptip placement="bottom-end" :width="280">
+                  <template #content>
+                    <div class="user-card">
+                      <div class="user-card-row">
+                          <Avatar class="avatar" :src="state.user.avatar" :size="48" />
+                        <div class="user-detail">
+                          <div class="name">{{state.user.user_name}}</div>
+                          <div class="summary">金币：100<i class="fa-sharp fa-regular fa-angle-right"></i></div>
+                        </div>
                       </div>
-                     </div>
-                     <div class="user-level">
-                        <Row justify="space-between" align="middle">
-                          <div class="label">吉友等级<strong>JY.{{state.user.user_level}}</strong></div>
-                          <div class="exp">{{state.user.user_exp}} / {{state.user.exp.rt}}<i class="fa-sharp fa-regular fa-angle-right"></i></div>
-                        </Row>
-                        <Progress :percent="state.user.user_exp_percent" hide-info :stroke-width="6" />
-                     </div>
-                    <!-- <Divider /> -->
-                    <Menu width="auto">
-                      <MenuItem name="1" :to="{name:'userHome',params:{id: state.user.id}}">我的主页</MenuItem>
-                      <MenuItem name="2" :to="{name:'userSettingProfile'}">个人资料</MenuItem>
-                      <MenuItem name="3" :to="{name:'userSettingWallet'}">钱包账户</MenuItem>
-                      <MenuItem name="4" :to="{name:'userSettingAccount'}">账号设置</MenuItem>
-                      <Divider />
-                      <MenuItem name="5" @click="logoutAction">退出</MenuItem>
-                    </Menu>
-                  </div>
-                </template>
-                <Avatar :src="state.user.avatar" :size="28" />
-              </Poptip>
-            </template>
-            <template v-else>
-              <span @click="showLogin">登录</span><Divider type="vertical" /><span @click="showLogin">注册</span>
-            </template>
-            <Button type="primary" size="small">投稿</Button>
+                      <div class="user-level">
+                          <Row justify="space-between" align="middle">
+                            <div class="label">吉友等级<strong>JY.{{state.user.user_level}}</strong></div>
+                            <div class="exp">{{state.user.user_exp}} / {{state.user.exp.rt}}<i class="fa-sharp fa-regular fa-angle-right"></i></div>
+                          </Row>
+                          <Progress :percent="state.user.user_exp_percent" hide-info :stroke-width="6" />
+                      </div>
+                      <!-- <Divider /> -->
+                      <Menu width="auto">
+                        <MenuItem name="1" :to="{name:'userHome',params:{id: state.user.id}}">我的主页</MenuItem>
+                        <MenuItem name="2" :to="{name:'userSettingProfile'}">个人资料</MenuItem>
+                        <MenuItem name="3" :to="{name:'userSettingWallet'}">钱包账户</MenuItem>
+                        <MenuItem name="4" :to="{name:'userSettingAccount'}">账号设置</MenuItem>
+                        <Divider />
+                        <MenuItem name="5" @click="logoutAction">退出</MenuItem>
+                      </Menu>
+                    </div>
+                  </template>
+                  <Avatar :src="state.user.avatar" :size="28" />
+                </Poptip>
+              </template>
+              <template v-else>
+                <div><span class="btn-link" @click="showLogin">登录</span><Divider type="vertical" /><span class="btn-link" @click="showLogin">注册</span></div>
+              </template>
+              <Button type="primary" size="small">投稿</Button>
+            </Space>
           </div>
         </section>
       </Header>
@@ -268,6 +276,23 @@ html, body, #app {
     height: 5px;
 }
 
+.ivu-input-prefix, .ivu-input-suffix {
+  z-index: 5 !important;
+}
+
+.ivu-input-round .ivu-input  {
+  border-radius: 100px !important;
+  z-index: 1;
+  padding: 4px 12px;
+  &.ivu-input-with-suffix {
+    padding-right: 32px;
+  }
+  background: #f6f6f6;
+  &:focus {
+    background: #fff;
+  }
+}
+
 span.primary {
   color: @primary-color;
   &.link {
@@ -482,7 +507,7 @@ a:hover {
   display: flex;
   align-items: center;
 
-  > span {
+  span.btn-link {
     cursor: pointer;
     &:hover {
       color: @primary-color;

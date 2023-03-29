@@ -67,13 +67,15 @@
                 </div>
             </Col>
             <Col flex="320px">
-                <div class="block bg-none"><Button size="large" type="primary" long icon="md-create">我要提问</Button></div>
-                <div class="block">
-                    <h3 class="title">热评帖子</h3>
-                </div>
-                <div class="block">
-                    <h3 class="title">随便看看</h3>
-                </div>
+                <Space :size="20" type="flex" direction="vertical">
+                    <Button size="large" type="primary" long icon="md-create">我要提问</Button>
+                    <div class="block">
+                        <h3 class="title">热评帖子</h3>
+                    </div>
+                    <div class="block">
+                        <h3 class="title">热评帖子</h3>
+                    </div>
+                </Space>
             </Col>
         </Row>
     </main>
@@ -263,7 +265,6 @@
 }
 
 .block {
-    margin-bottom: 20px;
     background: #fff;
     padding: 15px;
 

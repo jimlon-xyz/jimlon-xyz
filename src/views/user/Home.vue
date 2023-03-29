@@ -1,5 +1,6 @@
 <template>
-    <Row :gutter="20">
+    <main>
+        <Row :gutter="20">
         <Col flex="1">
             <div class="user-home-cover" :style="{'--height': '180px', '--bgCover': `url(${state.user?.home_cover || require('@/assets/user-card-bg.jpg')})`}"></div>
             <div class="user-meta">
@@ -52,6 +53,7 @@
             </div>
         </Col>
     </Row>
+    </main>
 </template>
 
 <script setup>

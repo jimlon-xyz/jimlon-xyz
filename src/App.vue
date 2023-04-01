@@ -65,7 +65,7 @@
       <Content id="content" class="content">
         <router-view/>
       </Content>
-
+      
       <Modal
             :transition-names="['move-up', 'fade']"
             v-model="state.showLogin"
@@ -160,7 +160,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, getCurrentInstance, watch, computed } from "vue"
+import { reactive, getCurrentInstance, watch, computed } from "vue"
 import { useRouter, onBeforeRouteUpdate } from "vue-router"
 import { useStore } from '@/stores'
 import useMitt from "./utils/mitt"

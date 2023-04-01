@@ -7,7 +7,7 @@
                         <TabPane label="最新" name="name1">
                             <div class="section-p-20">
                                 <List>
-                                    <ListItem v-for="k of 10" :key="`k-${k}`">
+                                    <ListItem v-for="k of 30" :key="`k-${k}`">
                                         <div class="topic-ltr">
                                             <div class="anwser-state resolved" v-if="k == 2">
                                                 <div class="value">1</div>
@@ -71,6 +71,7 @@
                     <Button size="large" type="primary" long icon="md-create">我要提问</Button>
                     <SimilarQuestionAside title="热门问题" />
                     <HotTagsAisde/>
+                    <ExpertsRankAside />
                 </Space>
             </Col>
         </Row>
@@ -80,6 +81,7 @@
 <script setup>
 import HotTagsAisde from "@/components/HotTagsAisde.vue";
 import SimilarQuestionAside from "@/components/SimilarQuestionAside.vue"
+import ExpertsRankAside from "@/components/ExpertsRankAside.vue"
 
 </script>
 

@@ -76,6 +76,9 @@ const props = defineProps({
             > a {
                 line-height: 20px;
                 color: @text-dark-color;
+                &:hover {
+                    color: @primary-color;
+                }
                 
             }
             .answer-count {

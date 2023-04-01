@@ -22,7 +22,7 @@ module.exports = defineConfig({
 		loaderOptions: {
 		  less: {
 			additionalData: `
-				@import "~@/theme.less";
+				@import "~@/theme.module.less";
 			`,
 			lessOptions: {
 			  javascriptEnabled: true,

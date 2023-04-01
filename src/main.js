@@ -3,7 +3,7 @@ import { createPinia } from 'pinia'
 import ViewUIPlus from 'view-ui-plus'
 import router from './router'
 import 'view-ui-plus/dist/styles/viewuiplus.css'
-import './theme.less'
+import './theme.module.less'
 import App from './App.vue'
 
 createApp(App)

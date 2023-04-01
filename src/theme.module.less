@@ -10,3 +10,9 @@
 @text-dark-color: rgba(38,38,38,1);
 @border-color-third: rgba(38, 38, 38, 0.07);
 @table-td-hover-bg: fade(@primary-color, 5%);
+
+:export {
+    primaryColor: @primary-color;
+    seqTopColor: fade(@warning-color, 50%);
+    seqBaseColor: fade(@text-color-secondary, 40%);
+}

@@ -1,6 +1,6 @@
 <template>
     <div class="block">
-        <h3 class="title">相关问题</h3>
+        <h3 class="title">{{title}}</h3>
         <Divider />
         <div class="list">
             <div class="list-item" v-for="k of props.maxLength" :key="k">
@@ -14,15 +14,17 @@
 
 <script setup>
 const props = defineProps({
+    title: {
+        type: String,
+        default: '相关问题',
+    },
     tags: {
         type: Array,
         default: () => [],
-        required: true
     },
     maxLength: {
         type: Number,
         default: 10,
-        required: true
     }
 })
 </script>

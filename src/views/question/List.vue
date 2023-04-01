@@ -69,12 +69,8 @@
             <Col flex="320px">
                 <Space :size="20" type="flex" direction="vertical">
                     <Button size="large" type="primary" long icon="md-create">我要提问</Button>
-                    <div class="block">
-                        <h3 class="title">热评帖子</h3>
-                    </div>
-                    <div class="block">
-                        <h3 class="title">热评帖子</h3>
-                    </div>
+                    <SimilarQuestionAside title="热门问题" />
+                    <HotTagsAisde/>
                 </Space>
             </Col>
         </Row>
@@ -82,6 +78,8 @@
 </template>
 
 <script setup>
+import HotTagsAisde from "@/components/HotTagsAisde.vue";
+import SimilarQuestionAside from "@/components/SimilarQuestionAside.vue"
 
 </script>
 
@@ -263,28 +261,4 @@
     background: none;
     padding: 0;
 }
-
-.block {
-    background: #fff;
-    padding: 15px;
-
-    .title {
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 1;
-        color: @text-dark-color;
-        display: flex;
-        margin-bottom: 15px;
-
-        &::before {
-            content: "";
-            display: block;
-            width: 3px;
-            margin-right: 12px;
-            background: @primary-color;
-            border-radius: 3px;
-        }
-    }
-}
-
 </style>

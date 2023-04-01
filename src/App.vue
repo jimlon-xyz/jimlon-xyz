@@ -346,10 +346,6 @@ span.primary {
   flex-direction: column;
 }
 
-a:hover {
-  color: @primary-color !important;
-}
-
 .ivu-btn > span i[class^="fa-"] {
   margin-right: 3px;
   font-size: 14px;
